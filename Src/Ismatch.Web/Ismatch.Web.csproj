@@ -44,6 +44,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="NewLife.Core">
+      <HintPath>..\..\DLL\NewLife.Core.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -60,6 +63,9 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="XCode">
+      <HintPath>..\..\DLL\XCode.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Web.Razor">
@@ -88,11 +94,33 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\BaseController.cs" />
+    <Compile Include="App_Start\BaseTreeController.cs" />
+    <Compile Include="App_Start\Filters\IsMatchAuthorizeAttribute.cs" />
+    <Compile Include="App_Start\Filters\IsMatchHandleErrorAttribute.cs" />
+    <Compile Include="App_Start\IsMatchModelBinder.cs" />
+    <Compile Include="App_Start\DbRunTimeModule.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Setting.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ButtonController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ContentTestController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DataPermissionController.cs" />
+    <Compile Include="Areas\Admin\Controllers\IconController.cs" />
+    <Compile Include="Areas\Admin\Controllers\LogController.cs" />
+    <Compile Include="Areas\Admin\Controllers\MenuController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ReportController.cs" />
+    <Compile Include="Areas\Admin\Controllers\RoleController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ServerMonitoringController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -100,7 +128,48 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\Admin\Form.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Button\Form.cshtml" />
+    <Content Include="Areas\Admin\Views\Button\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Button\Select.cshtml" />
+    <Content Include="Areas\Admin\Views\ContentTest\Form.cshtml" />
+    <Content Include="Areas\Admin\Views\ContentTest\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\DataPermission\Form.cshtml" />
+    <Content Include="Areas\Admin\Views\DataPermission\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Icon\Form.cshtml" />
+    <Content Include="Areas\Admin\Views\Icon\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Icon\Select.cshtml" />
+    <Content Include="Areas\Admin\Views\Menu\Form.cshtml" />
+    <Content Include="Areas\Admin\Views\Menu\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Report\Area.cshtml" />
+    <Content Include="Areas\Admin\Views\Report\Bar.cshtml" />
+    <Content Include="Areas\Admin\Views\Report\Boxplot.cshtml" />
+    <Content Include="Areas\Admin\Views\Report\Bubble.cshtml" />
+    <Content Include="Areas\Admin\Views\Report\Column.cshtml" />
+    <Content Include="Areas\Admin\Views\Report\Flow.cshtml" />
+    <Content Include="Areas\Admin\Views\Report\Funnel.cshtml" />
+    <Content Include="Areas\Admin\Views\Report\Gauge.cshtml" />
+    <Content Include="Areas\Admin\Views\Report\GaugeClock.cshtml" />
+    <Content Include="Areas\Admin\Views\Report\Line.cshtml" />
+    <Content Include="Areas\Admin\Views\Report\Pie.cshtml" />
+    <Content Include="Areas\Admin\Views\Report\Polar.cshtml" />
+    <Content Include="Areas\Admin\Views\Report\PolarRose.cshtml" />
+    <Content Include="Areas\Admin\Views\Report\PolarSpider.cshtml" />
+    <Content Include="Areas\Admin\Views\Report\Scatter.cshtml" />
+    <Content Include="Areas\Admin\Views\Report\spline.cshtml" />
+    <Content Include="Areas\Admin\Views\Role\Form.cshtml" />
+    <Content Include="Areas\Admin\Views\Role\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ServerMonitoring\Index.cshtml" />
     <None Include="packages.config" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Error.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Welcome.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Shared\_Form_Layout.cshtml" />
+    <Content Include="Views\Shared\_Index_Layout.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -110,8 +179,20 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\Log\" />
+    <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Cloud.Core\Cloud.Core.csproj">
+      <Project>{d8bbf4e6-e9bf-4361-b683-d5c458605d50}</Project>
+      <Name>IsMatch.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cloud.Domain\Cloud.Domain.csproj">
+      <Project>{84a1f1e8-33e2-487d-9df0-ed47529a86fa}</Project>
+      <Name>Cloud.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

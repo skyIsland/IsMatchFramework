@@ -5,10 +5,12 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace Ismatch.Web
+namespace IsMatch.Web
 {
+    /// <summary>路由设置</summary>
     public class RouteConfig
     {
+        /// <summary>注册路由</summary>
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
