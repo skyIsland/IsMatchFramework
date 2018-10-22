@@ -24,6 +24,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -309,7 +310,6 @@
     <Content Include="Content\layouts\img\user-avatar.png" />
     <Content Include="Content\layouts\img\wechat.jpg" />
     <Content Include="Content\layouts\img\weipayimg.png" />
-    <Content Include="Content\layouts\img\weixin_nfine.png" />
     <Content Include="Content\layouts\ReadMe.txt" />
     <Content Include="Content\layouts\scripts\cloud.js" />
     <Content Include="Content\layouts\scripts\tab.js" />
@@ -413,7 +413,6 @@
     <Content Include="Config\Core.config" />
     <Content Include="Config\XCode.config" />
     <Content Include="Content\global\plugins\jquery\jquery.min.map" />
-    <Content Include="Areas\Admin\Views\Log\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Icon\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Icon\Select.cshtml" />
     <Content Include="Areas\Admin\Views\Icon\Form.cshtml" />
@@ -448,6 +447,7 @@
     <Content Include="Areas\Admin\Views\Report\Boxplot.cshtml" />
     <Content Include="Areas\Admin\Views\Report\Flow.cshtml" />
     <Content Include="Areas\Admin\Views\ServerMonitoring\Index.cshtml" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -458,6 +458,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\Log\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Content\global\css\" />
     <Folder Include="Content\global\scripts\" />

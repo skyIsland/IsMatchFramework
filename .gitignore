@@ -7,3 +7,5 @@
 **/obj
 **/Log
 **/App_Data
+/Src/Ismatch.Web/Plugins
+/Src/Ismatch.Web/Config
