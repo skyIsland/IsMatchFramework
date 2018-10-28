@@ -11,11 +11,14 @@
     <link href="~/Content/layouts/css/font.css" rel="stylesheet" />
     <link href="~/Content/global/plugins/bootstrap/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/layouts/css/theme.css" rel="stylesheet" />
-    <script src="~/Content/global/plugins/jquery/jquery-2.1.1.min.js"></script>
-    <script src="~/Content/global/plugins/bootstrap/bootstrap.js"></script>
-    <script src="~/Content/global/plugins/dialog/dialog.js"></script>
-    <script src="~/Content/global/plugins/cookie/jquery.cookie.js"></script>
-    <script src="~/Content/layouts/scripts/IsMatch.js"></script>
+    <!--lulu ui dialog start-->
+    <link rel="stylesheet" href="//qidian.gtimg.com/lulu/theme/peak/css/common/ui/Button.css">
+    <link rel="stylesheet" href="//qidian.gtimg.com/lulu/theme/peak/css/common/ui/Dialog.css">
+    <!--lulu ui dialog end-->
+    <!-- munu start-->
+    <link href="https://cdn.bootcss.com/metisMenu/3.0.3/metisMenu.css" rel="stylesheet">
+    <!-- munu end-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css">
 </head>
 <body style="overflow:hidden;">
     <!--ajax加载中时显示的图片-->
@@ -23,19 +26,19 @@
         <img src="~/Content/global/img/ajax-loader.gif" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; margin: auto;" />
     </div>
     @*<div id="config-tool">
-        <ul class="skin-colors">
-            <li class="skin-changer">红色</li>
-            <li class="skin-changer">红色</li>
-            <li class="skin-changer">红色</li>
-            <li class="split"></li>
-        </ul>
-        <a href="javascript:void(0);" id="operateClose" class="close"></a>
-    </div>*@
+            <ul class="skin-colors">
+                <li class="skin-changer">红色</li>
+                <li class="skin-changer">红色</li>
+                <li class="skin-changer">红色</li>
+                <li class="split"></li>
+            </ul>
+            <a href="javascript:void(0);" id="operateClose" class="close"></a>
+        </div>*@
     <div id="theme-wrapper">
         <!--头部导航栏开始-->
         <header id="header-navbar" class="navbar">
             <div class="container" style="padding-right:0px;">
-                <a href="#" id="logo" class="navbar-brand">云飞扬CMS开发平台</a>
+                <a href="#" id="logo" class="navbar-brand">IsMatch开发平台</a>
                 <div class="clearfix">
                     <div class="nav-no-collapse navbar-left pull-left hidden-sm hidden-xs">
                         <ul class="nav navbar-nav pull-left">
@@ -94,7 +97,7 @@
                             </li>
                         </ul>
                     </div>
-                    
+
                 </div>
             </div>
         </header>
@@ -117,7 +120,216 @@
                                 </div>
                             </div>
                             <div class="collapse navbar-collapse navbar-ex1-collapse" id="sidebar-nav">
-                                <ul id="nav-menu" class="nav nav-pills nav-stacked">
+                                <ul id="nav-menu" class="nav nav-pills nav-stacked metismenu animated bounce">
+                                        <li class="active">
+                                            <a href="#" aria-expanded="true">
+                                                <span class="fa fa-fw fa-github fa-lg"></span>
+                                                <span class="sidebar-nav-item">metisMenu</span>
+                                                <span class="fa arrow"></span>
+                                            </a>
+                                            <ul>
+                                                <li>
+                                                    <a href="https://github.com/onokumus/metisMenu">
+                                                        <span class="fa fa-fw fa-code-fork"></span>
+                                                        Fork
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="https://github.com/onokumus/metisMenu">
+                                                        <span class="fa fa-fw fa-star"></span>
+                                                        Star
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="https://github.com/onokumus/metisMenu/issues">
+                                                        <span class="fa fa-fw fa-exclamation-triangle"></span>
+                                                        Issues
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="#" aria-expanded="false">Bounce<span class="fa arrow"></span></a>
+                                            <ul aria-expanded="false" class="animated bounce">
+                                                <li>
+                                                    <a href="#">bounceIn</a>
+                                                    <ul class="animated bounceIn">
+                                                        <li><a href="#">item</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a href="#">bounceInDown</a>
+                                                    <ul class="animated bounceInDown">
+                                                        <li><a href="#">item</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a href="#">bounceInLeft</a>
+                                                    <ul class="animated bounceInLeft">
+                                                        <li><a href="#">item</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a href="#">bounceInRight</a>
+                                                    <ul class="animated bounceInRight">
+                                                        <li><a href="#">item</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a href="#">bounceInUp</a>
+                                                    <ul class="animated bounceInUp">
+                                                        <li><a href="#">item</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="#" aria-expanded="false">Fade<span class="fa arrow"></span></a>
+                                            <ul aria-expanded="false" class="animated fade">
+                                                <li>
+                                                    <a href="#">fadeIn</a>
+                                                    <ul class="animated fadeIn">
+                                                        <li><a href="#">item</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a href="#">fadeInDown</a>
+                                                    <ul class="animated fadeInDown">
+                                                        <li><a href="#">item</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a href="#">fadeInDownBig</a>
+                                                    <ul class="animated fadeInDownBig">
+                                                        <li><a href="#">item</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a href="#">fadeInLeft</a>
+                                                    <ul class="animated fadeInLeft">
+                                                        <li><a href="#">item</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a href="#">fadeInLeftBig</a>
+                                                    <ul class="animated fadeInLeftBig">
+                                                        <li><a href="#">item</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a href="#">fadeInRight</a>
+                                                    <ul class="animated fadeInRight">
+                                                        <li><a href="#">item</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a href="#">fadeInRightBig</a>
+                                                    <ul class="animated fadeInRightBig">
+                                                        <li><a href="#">item</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a href="#">fadeInUp</a>
+                                                    <ul class="animated fadeInUp">
+                                                        <li><a href="#">item</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a href="#">fadeInUpBig</a>
+                                                    <ul class="animated fadeInUpBig">
+                                                        <li><a href="#">item</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="#" aria-expanded="false">Flip<span class="fa arrow"></span></a>
+                                            <ul aria-expanded="false" class="animated flip">
+                                                <li>
+                                                    <a href="#">flipInX</a>
+                                                    <ul class="animated flipInX">
+                                                        <li><a href="#">item</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a href="#">flipInY</a>
+                                                    <ul class="animated flipInY">
+                                                        <li><a href="#">item</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="#" aria-expanded="false">Zoom<span class="fa arrow"></span></a>
+                                            <ul aria-expanded="false" class="animated swing">
+                                                <li>
+                                                    <a href="#">zoomIn</a>
+                                                    <ul class="animated zoomIn">
+                                                        <li><a href="#">item</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a href="#">zoomInDown</a>
+                                                    <ul class="animated zoomInDown">
+                                                        <li><a href="#">item</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a href="#">zoomInLeft</a>
+                                                    <ul class="animated zoomInLeft">
+                                                        <li><a href="#">item</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a href="#">zoomInRight</a>
+                                                    <ul class="animated zoomInRight">
+                                                        <li><a href="#">item</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a href="#">zoomInUp</a>
+                                                    <ul class="animated zoomInUp">
+                                                        <li><a href="#">item</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+
+                                        <li>
+                                            <a href="#" aria-expanded="false">Slide<span class="fa arrow"></span></a>
+                                            <ul aria-expanded="false" class="animated shake">
+                                                <li>
+                                                    <a href="#">slideInDown</a>
+                                                    <ul class="animated slideInDown">
+                                                        <li><a href="#">item</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a href="#">slideInLeft</a>
+                                                    <ul class="animated slideInLeft">
+                                                        <li><a href="#">item</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a href="#">slideInRight</a>
+                                                    <ul class="animated slideInRight">
+                                                        <li><a href="#">item</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a href="#">slideInUp</a>
+                                                    <ul class="animated zoomInRight">
+                                                        <li><a href="#">item</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a href="#">slideInUp</a>
+                                                    <ul class="animated zoomInUp">
+                                                        <li><a href="#">item</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
                                     <li class="">
                                         <a data-id="51174D27-3001-4CCF-AAB2-0AA2A6CEAA50" href="#" class="dropdown-toggle">
                                             <i class="fa fa-bar-chart-o"></i><span>统计报表</span><i class="fa fa-angle-right drop-icon"></i>
@@ -219,6 +431,17 @@
         <div class="loading-shade"></div>
         <div class="loading-content" onclick="IsMatch.common.loading(false)">数据加载中，请稍候…</div>
     </div>
+
+    <script src="~/Content/global/plugins/jquery/jquery-2.1.1.min.js"></script>
+    <script src="~/Content/global/plugins/bootstrap/bootstrap.js"></script>
+    <script src="~/Content/global/plugins/cookie/jquery.cookie.js"></script>
+    <!--lulu ui dialog start-->
+    <script src="//qidian.gtimg.com/lulu/theme/peak/js/common/ui/Dialog.js"></script>
+    <!--lulu ui dialog end-->
+    <!-- munu start-->
+    <script src="https://cdn.bootcss.com/metisMenu/3.0.3/metisMenu.js"></script>
+    <!-- munu end-->
+    <script src="~/Content/layouts/scripts/IsMatch.js"></script>
     <script src="~/Content/layouts/scripts/index.js"></script>
     <script src="~/Content/layouts/scripts/tab.js"></script>
     <script src="~/Content/global/plugins/loading/pace.min.js"></script>

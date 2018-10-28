@@ -48,6 +48,7 @@ namespace IsMatch.Web.Controllers
         public ActionResult Login(String userName, String password,Boolean? rememberme)
         {
             var provider = ManageProvider.Provider;
+            password = password.MD5().MD5();// md5加密两次
             var admin = provider.Login(userName, password, rememberme ?? false);
             if (admin != null)
             {
