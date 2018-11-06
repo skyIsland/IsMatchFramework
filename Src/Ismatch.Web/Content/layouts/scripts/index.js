@@ -27,18 +27,18 @@ function renderMenuHtml() {
                 //是否可见
                 if (row.Visible) {
                     var icon = row.Icon ? '<i class="fa ' + row.Icon + '"></i>' : "";
-                    html += '<li>';
-                    html += '<a data-id="' + row.ID + '" href="#" class="dropdown-toggle">' + icon + '<span>' + row.Name + '</span><i class="fa fa-angle-right drop-icon"></i></a>';
+                    html += '<li class = "parent">';
+                    html += '<a data-id="' + row.ID + '" href="#" class="dropdown-toggle">' + icon + '<span>' + row.Name + '</span></a>';
                     var childs = value.Childs;
                     if (childs && childs.length > 0) {
-                        html += '<ul class="submenu">';
+                        html += '<ul class="sub-menu">';
                         $.each(childs, function (k, v) {
                             var subRow = v;
                             //是否可见
                             if (subRow.Visible) {
                                 var subIcon = subRow.Icon ? '<i class="fa ' + subRow.Icon + '"></i>' : "";
                                 html += '<li>';
-                                html += '<a class="menuItem" data-id="' + subRow.ID + '" href="' + (subRow.Url ? subRow.Url : "") + '" data-index="' + subRow.Sort + '">' + subIcon + '<span>' + subRow.Name + '</span></a>';
+                                html += '<a  data-id="' + subRow.ID + '" href="' + (subRow.Url ? subRow.Url : "") + '" data-index="' + subRow.Sort + '">' + subIcon + '<span>' + subRow.Name + '</span></a>';
                                 html += '</li>';
                             }
                         });
@@ -48,12 +48,12 @@ function renderMenuHtml() {
                 }
             }
         });
-        $("#nav-menu").prepend(html);
+        $(".sidebar-elements").append(html);
     }
-    //绑定父菜单的展开与折叠事件
-    bindMenuCollapse();
-    //绑定菜单缩放事件
-    bindMenuZoom();
+    ////绑定父菜单的展开与折叠事件
+    //bindMenuCollapse();
+    ////绑定菜单缩放事件
+    //bindMenuZoom();
 }
 //绑定父菜单的展开与折叠事件
 function bindMenuCollapse() {
@@ -241,11 +241,11 @@ $(function () {
     //设置用户信息
     if (top.clientData && top.clientData.Admin) {
         var admin = top.clientData.Admin;
-        $("#adminName").text(admin.Name);
-        $("#adminInfo").text(admin.Name + ";" + admin.DisplayName);
+        $(".user-name").text(admin.Name);
+        //$("#adminInfo").text(admin.Name + ";" + admin.DisplayName);
     }
-    //绑定页面事件
-    bindPageEvent();
-    //皮肤切换
-    toggleSkin();
+    ////绑定页面事件
+    //bindPageEvent();
+    ////皮肤切换
+    //toggleSkin();
 });

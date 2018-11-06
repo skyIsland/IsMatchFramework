@@ -14,9 +14,15 @@
     <title>Ismatch平台</title>
     <link rel="stylesheet" type="text/css" href="~/Content/global/js/plugins/perfect-scrollbar/css/perfect-scrollbar.min.css" />
     <link rel="stylesheet" type="text/css" href="~/Content/global/js/plugins/material-design-icons/css/material-design-iconic-font.min.css" />
+    <link href="~/Content/layouts/css/font.css" rel="stylesheet" />
     <!--[if lt IE 9]>
     <![endif]-->
     <link rel="stylesheet" href="~/Content/global/css/app.min.css" type="text/css" />
+    <style>
+        a.dropdown-toggle > span, ul.sub-menu > li > a > span {
+            margin-left: 10px;
+        }
+    </style>
 </head>
 <body>
     <div class="be-wrapper">
@@ -49,7 +55,7 @@
                             </div>
                         </li>
                     </ul>
-                    <div class="page-title"><span>云淡风轻</span></div>
+                    <div class="page-title"><span>来日可期</span></div>
                     <ul class="nav navbar-nav float-right be-icons-nav">
                         <li class="nav-item dropdown">
                             <!-- 第一个标签 -->
@@ -141,44 +147,50 @@
         <!-- 菜单 start -->
         <div class="be-left-sidebar">
             <div class="left-sidebar-wrapper">
-                <a href="#" class="left-sidebar-toggle">Blank Page</a>
+                <a href="#" class="left-sidebar-toggle">来日可期</a>
                 <div class="left-sidebar-spacer">
                     <div class="left-sidebar-scroll">
                         <div class="left-sidebar-content">
                             <ul class="sidebar-elements">
-                                <li class="divider">Menu</li>
-                                <li class="parent">
-                                    <a href="#"><i class="icon mdi mdi-home"></i><span>Home</span></a>
-                                    <ul class="sub-menu">
-                                        <li>
-                                            <a href="#"><i class="icon mdi mdi-home"></i><span>Blank Page</span></a>
-                                        </li>
-                                        <li class="active">
-                                            <a href="#">Blank Page Header</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Page Aside</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Login</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">404 Page</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Sign Up</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Forgot Password</a>
-                                        </li>
-                                    </ul>
-                                </li>
+                                <li class="divider">菜单</li>
+                                @*<li class="parent">
+                                        <a href="#">
+                                            <i class="icon mdi mdi-home"></i>
+                                            <span>Home</span>
+                                        </a>
+                                        <ul class="sub-menu">
+                                            <li>
+                                                <a href="#">
+                                                    <i class="icon mdi mdi-home"></i>
+                                                    <span>Blank Page</span>
+                                                </a>
+                                            </li>
+                                            <li class="active">
+                                                <a href="#">Blank Page Header</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Page Aside</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Login</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">404 Page</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Sign Up</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Forgot Password</a>
+                                            </li>
+                                        </ul>
+                                    </li>*@
                             </ul>
                         </div>
                     </div>
                 </div>
                 <div class="progress-widget">
-                    <div class="progress-data"><span class="progress-value">60%</span><span class="name">Current Project</span></div>
+                    <div class="progress-data"><span class="progress-value">5%</span><span class="name">当前进度</span></div>
                     <div class="progress">
                         <div style="width: 60%;" class="progress-bar progress-bar-primary"></div>
                     </div>
@@ -199,7 +211,7 @@
                 </nav>
             </div>
             <div class="main-content container-fluid">
-                <h3 class="text-center">Content goes here!</h3>
+                <h3>我还在考虑是使用单页面应用方案还是iframe 标签页</h3>
             </div>
         </div>
         <!-- 主体内容 end -->
@@ -443,7 +455,7 @@
         <!-- 顶部导航右侧第一个标签内容end -->
     </div>
     <script src="~/Content/global/js/plugins/jquery/jquery.min.js" type="text/javascript"></script>
-    <script src="~/Content/global/js/plugins/perfect-scrollbar/js/perfect-scrollbar.jquery.min.js" type="text/javascript"></script>
+    <script src="~/Content/global/js/plugins/perfect-scrollbar/js/perfect-scrollbar.jquery.min.js" type="text/javascript"></script>    
     <script src="~/Content/global/js/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="~/Content/global/js/app.min.js" type="text/javascript"></script>
     <script src="~/Content/layouts/scripts/index.js"></script>
