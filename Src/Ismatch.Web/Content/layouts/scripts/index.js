@@ -248,7 +248,4 @@ $(function () {
     bindPageEvent();
     //皮肤切换
     toggleSkin();
-
-    // 测试metisMenu
-    $('#nav-menu').metisMenu();
 });
