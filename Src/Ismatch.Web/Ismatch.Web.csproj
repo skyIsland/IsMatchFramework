@@ -94,7 +94,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\global\css\app.min.css" />
     <Content Include="Content\global\images\140x140.png" />
     <Content Include="Content\global\images\404-bg.png" />
     <Content Include="Content\global\images\avatar-150.png" />
@@ -218,6 +217,7 @@
     <Compile Include="Areas\Admin\Controllers\ReportController.cs" />
     <Compile Include="Areas\Admin\Controllers\RoleController.cs" />
     <Compile Include="Areas\Admin\Controllers\ServerMonitoringController.cs" />
+    <Content Include="Content\global\css\app.css" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Global.asax.cs">

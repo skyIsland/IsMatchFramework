@@ -36,7 +36,7 @@ function renderMenuHtml() {
                             if (subRow.Visible) {
                                 var subIcon = subRow.Icon ? '<i class="fa ' + subRow.Icon + '"></i>' : "";
                                 html += '<li>';
-                                html += '<a  data-id="' + subRow.ID + '" href="' + (subRow.Url ? subRow.Url : "") + '" data-index="' + subRow.Sort + '">' + subIcon + '<span>' + subRow.Name + '</span></a>';
+                                html += '<a  class="menuItem" data-id="' + subRow.ID + '" href="' + (subRow.Url ? subRow.Url : "") + '" data-index="' + subRow.Sort + '">' + subIcon + '<span>' + subRow.Name + '</span></a>';
                                 html += '</li>';
                             }
                         });
