@@ -109,6 +109,7 @@
     <Content Include="Content\global\images\db-icon.png" />
     <Content Include="Content\global\images\dribbble.png" />
     <Content Include="Content\global\images\dropbox.png" />
+    <Content Include="Content\global\images\favicon.ico" />
     <Content Include="Content\global\images\fb-icon.png" />
     <Content Include="Content\global\images\fl-icon.png" />
     <Content Include="Content\global\images\gh-icon.png" />
@@ -151,7 +152,7 @@
     <Content Include="Content\global\js\plugins\roboto\Roboto-RegularItalic.svg" />
     <Content Include="Content\global\js\plugins\roboto\Roboto-Thin.svg" />
     <Content Include="Content\global\js\plugins\roboto\Roboto-ThinItalic.svg" />
-    <Content Include="Content\global\plugins\cookie\jquery.cookie.js" />
+    <Content Include="Content\global\js\plugins\cookie\jquery.cookie.js" />
     <Content Include="Content\layouts\css\font.css" />
     <Content Include="Content\layouts\css\theme.css" />
     <Content Include="Content\layouts\css\ui.css" />

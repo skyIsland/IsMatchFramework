@@ -1,11 +1,9 @@
-
-//获取客户端数据
+// 获取客户端数据
 function getClientData() {
     $.ajax({
         url: "/Home/GetClientData",
-        type: "get",
-        //使用同步加载
-        async: false,
+        type: "GET",
+        async: false,// 使用同步加载
         success: function (data) {
             if (data.Status === 1) {
                 top.clientData = data.Data;
@@ -15,7 +13,8 @@ function getClientData() {
         }
     });
 }
-//生成菜单Html
+
+// 生成菜单Html
 function renderMenuHtml() {
     var permissionManager = top.clientData ? top.clientData.PermissionManager : null;
     if (permissionManager && permissionManager.Permissions && permissionManager.Permissions.length > 0) {
@@ -24,8 +23,7 @@ function renderMenuHtml() {
         $.each(permissions, function (key, value) {
             var row = value.Menu;
             if (row.ParentID === 0) {
-                //是否可见
-                if (row.Visible) {
+                if (row.Visible) { // 是否可见
                     var icon = row.Icon ? '<i class="fa ' + row.Icon + '"></i>' : "";
                     html += '<li class = "parent">';
                     html += '<a data-id="' + row.ID + '" href="#" class="dropdown-toggle">' + icon + '<span>' + row.Name + '</span></a>';
@@ -34,7 +32,7 @@ function renderMenuHtml() {
                         html += '<ul class="sub-menu">';
                         $.each(childs, function (k, v) {
                             var subRow = v;
-                            //是否可见
+                            // 是否可见
                             if (subRow.Visible) {
                                 var subIcon = subRow.Icon ? '<i class="fa ' + subRow.Icon + '"></i>' : "";
                                 html += '<li>';
@@ -50,12 +48,13 @@ function renderMenuHtml() {
         });
         $(".sidebar-elements").append(html);
     }
-    ////绑定父菜单的展开与折叠事件
+    // 绑定父菜单的展开与折叠事件
     //bindMenuCollapse();
-    ////绑定菜单缩放事件
+    // 绑定菜单缩放事件
     //bindMenuZoom();
 }
-//绑定父菜单的展开与折叠事件
+
+// 绑定父菜单的展开与折叠事件
 function bindMenuCollapse() {
     $('#sidebar-nav,#nav-col-submenu').on('click', '.dropdown-toggle', function (e) {
         e.preventDefault();
@@ -81,7 +80,8 @@ function bindMenuCollapse() {
         }
     });
 }
-//绑定菜单缩放事件
+
+// 绑定菜单缩放事件
 function bindMenuZoom() {
     //缩放按钮点击事件
     $("#make-small-nav").click(function (e) {
@@ -127,36 +127,13 @@ function bindMenuZoom() {
         }
     });
 }
-//绑定页面事件
+
+// 绑定页面事件
 function bindPageEvent() {
-    //绑定头部搜索栏点击事件
-    $('.mobile-search').click(function (e) {
-        e.preventDefault();
-        $('.mobile-search').addClass('active');
-        $('.mobile-search form input.form-control').focus();
-    });
-    //鼠标弹起时移除头部搜索栏激活事件
-    $(document).mouseup(function (e) {
-        var container = $('.mobile-search');
-        if (!container.is(e.target) && container.has(e.target).length === 0) // ... nor a descendant of the container
-        {
-            container.removeClass('active');
-        }
-    });
-    //初始化主窗体高度
-    $("#content-wrapper").find('.mainContent').height($(window).height() - 100);
-    //绑定调整浏览器窗口大小事件
-    $(window).resize(function (e) {
-        $("#content-wrapper").find('.mainContent').height($(window).height() - 100);
-    });
-    //页面加载完毕事件
-    $(window).load(function () {
-        window.setTimeout(function () {
-            $('#ajax-loader').fadeOut();
-        }, 300);
-    });
+
 }
-//写入本地存储
+
+// 写入本地存储
 function writeStorage(storage, key, value) {
     if (storage) {
         try {
@@ -165,7 +142,8 @@ function writeStorage(storage, key, value) {
         catch (e) { console.log(e); }
     }
 }
-//移除class前缀
+
+// 移除class前缀
 $.fn.removeClassPrefix = function (prefix) {
     this.each(function (i, el) {
         var classes = el.className.split(" ").filter(function (c) {
@@ -175,7 +153,8 @@ $.fn.removeClassPrefix = function (prefix) {
     });
     return this;
 };
-//皮肤切换
+
+// 皮肤切换
 function toggleSkin() {
     //测试浏览器是否支持本地存储
     var storage, fail, uid;
@@ -234,18 +213,22 @@ function toggleSkin() {
 }
 
 $(function () {
-    //加载客户端数据
+    // 加载客户端数据
     getClientData();
-    //生成菜单Html
+
+    // 生成菜单Html
     renderMenuHtml();
-    //设置用户信息
+
+    // 设置用户信息
     if (top.clientData && top.clientData.Admin) {
         var admin = top.clientData.Admin;
         $(".user-name").text(admin.Name);
         //$("#adminInfo").text(admin.Name + ";" + admin.DisplayName);
     }
-    ////绑定页面事件
-    //bindPageEvent();
-    ////皮肤切换
+
+    // 绑定页面事件
+    bindPageEvent();
+
+    // 皮肤切换
     //toggleSkin();
 });
