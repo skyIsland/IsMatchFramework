@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="~/Content/global/css/app.css" type="text/css" />
 </head>
 <body>
-    <div class="be-wrapper">
+    <div class="be-wrapper be-color-header">
         <!-- 顶部导航 start -->
         <nav class="navbar navbar-expand fixed-top be-top-header">
             <div class="container-fluid">
@@ -199,31 +199,20 @@
         <!-- 主体内容 start -->
         <div class="be-content">
             <div class="page-head">
+                <h2 class="page-head-title"></h2>
                 <nav aria-label="breadcrumb" role="navigation">
-                    <ul role="tablist" class="nav nav-tabs">
-                        <li class="nav-item"><a href="#home" data-toggle="tab" role="tab" class="nav-link active">欢迎首页</a></li>
-                        <li class="nav-item"><a href="#profile" data-toggle="tab" role="tab" class="nav-link">平台介绍</a></li>
-                    </ul>
+                    <ol class="breadcrumb page-head-nav">
+                        <li class="breadcrumb-item">
+                            <a href="#">系统管理</a>
+                        </li>
+                        <li class="breadcrumb-item active">
+                            <a href="#">用户管理</a>
+                        </li>
+                    </ol>
                 </nav>
             </div>
             <div class="main-content container-fluid">
-                <div class="row">
-                    <!--Default Tabs-->
-                    <div class="col-12 col-lg-12">
-                        <div class="card">
-                            <div class="tab-container">
-                                <div class="tab-content">
-                                    <div id="home" role="tabpanel" class="tab-pane active">
-                                        <iframe class="iframe" style="width:100%;height:100%;" src="/Home/Welcome" frameborder="0" data-url="/Home/Welcome" data-id="-1"></iframe>
-                                    </div>
-                                    <div id="profile" role="tabpanel" class="tab-pane">
-                                        <iframe class="iframe" style="width:100%;height:100%;" src="/Home/About" frameborder="0" data-url="/Home/About" data-id="-2"></iframe>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <iframe class="iframe" id="iframe0" style="width:100%;height:100%;" src="/Home/About" frameborder="0"></iframe>
             </div>
         </div>
         <!-- 主体内容 end -->
@@ -476,7 +465,7 @@
         $(document).ready(function () {
             // initialize the javascript
             App.init();
-            setProgress('7%');
+            setProgress('8%');
         });
 
         // 设置项目开发进度条
