@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace Ismatch.Web.Areas.Admin
+namespace IsMatch.Web.Areas.Admin
 {
     /// <summary>用户管理中心区域注册</summary>
     public class AdminAreaRegistration : AreaRegistration

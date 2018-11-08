@@ -15,6 +15,8 @@ namespace IsMatch.Web
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.MapRoute("ManagerIndex", "manager.aspx", new { controller = "Home", action = "Index" });
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

@@ -150,6 +150,8 @@ namespace Cloud.Domain
             entity.RegisterTime = DateTime.Now;
             entity.CreateDate = DateTime.Now;
             entity.UpdateDate = DateTime.Now;
+            entity.Salt = RandomHelper.GetDateTimeCode().MD5_16().ToLower();
+            entity.Password = DESEncrypt.Encrypt("admin", entity.Salt).MD5().ToLower();
             entity.Insert();
 
             if (XTrace.Debug) XTrace.WriteLine("完成初始化{0}[{1}]数据！", typeof(Admin).Name, Meta.Table.DataTable.DisplayName);
