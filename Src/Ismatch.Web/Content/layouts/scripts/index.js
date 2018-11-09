@@ -131,11 +131,11 @@ function bindMenuZoom() {
 // 绑定页面事件
 function bindPageEvent() {
     // 初始化主窗体高度
-    $(".be-content").find('.tab-container').height($(window).height() - 150);
+    $(".be-content").find('.main-content').height($(window).height() - 150);
 
     // 绑定调整浏览器窗口大小事件
     $(window).resize(function (e) {
-        $(".be-content").find('.tab-container').height($(window).height() - 150);
+        $(".be-content").find('.main-content').height($(window).height() - 150);
     });
 }
 
