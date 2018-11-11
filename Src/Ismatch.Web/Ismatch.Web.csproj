@@ -1,4 +1,5 @@
 ﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -23,6 +24,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>3.0</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -130,9 +132,24 @@
     <Content Include="Content\global\images\user-profile-display.png" />
     <Content Include="Content\global\images\yt-icon.png" />
     <Content Include="Content\global\js\app.min.js" />
+    <Content Include="Content\global\js\plugins\bootstrap-table\bootstrap-table.css" />
+    <Content Include="Content\global\js\plugins\bootstrap-table\bootstrap-table.js" />
+    <Content Include="Content\global\js\plugins\bootstrap-table\locale\bootstrap-table-ja-JP.js" />
+    <Content Include="Content\global\js\plugins\bootstrap-table\locale\bootstrap-table-zh-CN.js" />
+    <Content Include="Content\global\js\plugins\bootstrap-table\locale\bootstrap-table-zh-TW.js" />
     <Content Include="Content\global\js\plugins\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Content\global\js\plugins\bootstrap\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\global\js\plugins\bootstrap\js\bootstrap.min.js" />
     <Content Include="Content\global\js\plugins\jquery\jquery.min.js" />
+    <Content Include="Content\global\js\plugins\layer\layer.js" />
+    <Content Include="Content\global\js\plugins\layer\mobile\layer.js" />
+    <Content Include="Content\global\js\plugins\layer\mobile\need\layer.css" />
+    <Content Include="Content\global\js\plugins\layer\theme\default\icon-ext.png" />
+    <Content Include="Content\global\js\plugins\layer\theme\default\icon.png" />
+    <Content Include="Content\global\js\plugins\layer\theme\default\layer.css" />
+    <Content Include="Content\global\js\plugins\layer\theme\default\loading-0.gif" />
+    <Content Include="Content\global\js\plugins\layer\theme\default\loading-1.gif" />
+    <Content Include="Content\global\js\plugins\layer\theme\default\loading-2.gif" />
     <Content Include="Content\global\js\plugins\material-design-icons\css\material-design-iconic-font.css" />
     <Content Include="Content\global\js\plugins\material-design-icons\css\material-design-iconic-font.min.css" />
     <Content Include="Content\global\js\plugins\material-design-icons\fonts\Material-Design-Iconic-Font.svg" />
@@ -189,7 +206,6 @@
     <Content Include="Content\layouts\scripts\ismatch-tab.js" />
     <Content Include="Content\layouts\scripts\IsMatch.js" />
     <Content Include="Content\layouts\scripts\index.js" />
-    <Content Include="Content\layouts\scripts\tab.js" />
     <Content Include="Content\layouts\scripts\ViewModel.js" />
     <Content Include="Content\pages\login\index.css" />
     <Content Include="Content\pages\login\index.js" />
@@ -346,6 +362,10 @@
     <Content Include="Content\global\js\plugins\roboto\Roboto-ThinItalic.ttf" />
     <Content Include="Content\global\js\plugins\roboto\Roboto-ThinItalic.woff" />
     <Content Include="Content\global\js\plugins\roboto\Roboto-ThinItalic.woff2" />
+    <Content Include="Content\global\js\plugins\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\global\js\plugins\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\global\js\plugins\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\global\js\plugins\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
     <None Include="packages.config" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Error.cshtml" />
@@ -378,11 +398,15 @@
       <Name>Cloud.Domain</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <ProjectExtensions>

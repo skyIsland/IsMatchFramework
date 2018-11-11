@@ -6,7 +6,7 @@
 /**==================================================云飞扬快速开发平台js模块====================================================**/
 
 //云平台js模块
-var ismatch = ismatch || {};
+var IsMatch = IsMatch || {};
 (function ($) {
     /********************通用模块**********************/
 
@@ -14,12 +14,12 @@ var ismatch = ismatch || {};
      * 通用模块
      * @property {Object} common
      */
-    ismatch.common = ismatch.common || {};
+    IsMatch.common = IsMatch.common || {};
     /**
      * 页面重新加载
      * @return {Boolean}
      */
-    ismatch.common.reload = function () {
+    IsMatch.common.reload = function () {
         location.reload();
         return false;
     };
@@ -28,7 +28,7 @@ var ismatch = ismatch || {};
      * @param  {Boolean} isShow 是否显示遮罩层
      * @param  {String}  text   显示文本
      */
-    ismatch.common.loading = function (isShow, text) {
+    IsMatch.common.loading = function (isShow, text) {
         var $loadingpage = top.$("#loadingPage");
         var $loadingtext = $loadingpage.find('.loading-content');
         if (isShow) {
@@ -50,7 +50,7 @@ var ismatch = ismatch || {};
      * 获取当前页面的查询字符串，以对象的形式返回
      * @return {Object}  返回键值对
      */
-    ismatch.common.getQueryStringArgs = function () {
+    IsMatch.common.getQueryStringArgs = function () {
         //取得查询字符串并去掉问号
         var qs = location.search.length > 0 ? location.search.substring(1) : "";
         //保存数据的对象
@@ -75,8 +75,8 @@ var ismatch = ismatch || {};
      * 根据名称获取当前页面的查询字符串的值
      * @return {String}  返回对应的值
      */
-    ismatch.common.request = function (name) {
-        var args = ismatch.common.getQueryStringArgs();
+    IsMatch.common.request = function (name) {
+        var args = IsMatch.common.getQueryStringArgs();
         var result = "";
         if (args) {
             $.each(args, function (key, value) {
@@ -93,8 +93,8 @@ var ismatch = ismatch || {};
     * 获取当前页面的请求参数，以对象的形式返回
     * @return {Object}  返回键值对
     */
-    ismatch.common.getRequestData = function () {
-        var requestData = ismatch.common.getQueryStringArgs();
+    IsMatch.common.getRequestData = function () {
+        var requestData = IsMatch.common.getQueryStringArgs();
         //id参数
         requestData.id = requestData.id || "0";
         //页面类型 type=detail 表示查看详情
@@ -105,7 +105,7 @@ var ismatch = ismatch || {};
      * 获取当前窗口
      * @return {Object}  
      */
-    ismatch.common.currentWindow = function () {
+    IsMatch.common.currentWindow = function () {
         var iframeId = top.$(".iframe:visible").attr("id");
         return top.frames[iframeId];
     };
@@ -113,7 +113,7 @@ var ismatch = ismatch || {};
      * 获取浏览器类型
      * @return {String}  
      */
-    ismatch.common.browser = function () {
+    IsMatch.common.browser = function () {
         var userAgent = navigator.userAgent;
         var isOpera = userAgent.indexOf("Opera") > -1;
         if (isOpera) {
@@ -142,7 +142,7 @@ var ismatch = ismatch || {};
      * @param  {Object} data   数据
      * @param  {String} method 方法类型，post或者get
      */
-    ismatch.common.download = function (url, data, method) {
+    IsMatch.common.download = function (url, data, method) {
         if (url && data) {
             data = typeof data == 'string' ? data : jQuery.param(data);
             var inputs = '';
@@ -160,12 +160,12 @@ var ismatch = ismatch || {};
      * 弹窗模块
      * @property {Object} modal
      */
-    ismatch.modal = ismatch.modal || {};
+    IsMatch.modal = IsMatch.modal || {};
     /**
      * 打开弹窗
      * @param  {Object} options  选项
      */
-    ismatch.modal.open = function (options) {
+    IsMatch.modal.open = function (options) {
         var defaults = {
             id: null,
             title: '系统窗口',
@@ -208,7 +208,7 @@ var ismatch = ismatch || {};
      * 关闭弹窗
      * @param  {Object} options  参数
      */
-    ismatch.modal.close = function () {
+    IsMatch.modal.close = function () {
         var index = top.layer.getFrameIndex(window.frameElement.id); //先得到当前iframe层的索引
         var $IsdialogClose = top.$("#layui-layer" + index).find('.layui-layer-btn').find("#IsdialogClose");
         var IsClose = $IsdialogClose.is(":checked");
@@ -226,7 +226,7 @@ var ismatch = ismatch || {};
      * @param  {String} content  提示内容
      * @param  {Number} type  提示类型 1 成功 0 错误
      */
-    ismatch.modal.alert = function (content, type) {
+    IsMatch.modal.alert = function (content, type) {
         var icon = "fa-check-circle";
         switch (type) {
             case 0://失败
@@ -257,7 +257,7 @@ var ismatch = ismatch || {};
      * @param  {String} content  提示内容
      * @param  {Number} type  提示类型 1 成功 0 错误
      */
-    ismatch.modal.msg = function (content, type) {
+    IsMatch.modal.msg = function (content, type) {
         if (type != undefined) {
             var icon = "fa-check-circle";
             var cssType = 'success';
@@ -291,7 +291,7 @@ var ismatch = ismatch || {};
      * @param  {String} content  提示内容
      * @param  {Function} callBack  点击按钮后执行的回调函数，回调函数的参数类型为布尔值
      */
-    ismatch.modal.confirm = function (content, callBack) {
+    IsMatch.modal.confirm = function (content, callBack) {
         top.layer.confirm(content, {
             icon: "fa-exclamation-circle",
             title: "系统提示",
@@ -310,13 +310,13 @@ var ismatch = ismatch || {};
      * 表单模块
      * @property {Object} 
      */
-    ismatch.form = ismatch.form || {};
+    IsMatch.form = IsMatch.form || {};
 
     /**
      * 表单数据加载
      * @param  {Object} options  选项
      */
-    ismatch.form.load = function (options) {
+    IsMatch.form.load = function (options) {
         var defaults = {
             url: "",
             params: [],
@@ -330,7 +330,7 @@ var ismatch = ismatch || {};
                 url: options.url,
                 data: options.params,
                 beforeSend: function () {
-                    ismatch.common.loading(true, options.loading);
+                    IsMatch.common.loading(true, options.loading);
                 },
                 success: function (data) {
                     if (data.Status === 1) {
@@ -338,7 +338,7 @@ var ismatch = ismatch || {};
                             options.success(data);
                         }
                     } else {
-                        ismatch.modal.alert(data.Msg, data.Status);
+                        IsMatch.modal.alert(data.Msg, data.Status);
                     }
                 }
             });
@@ -349,7 +349,7 @@ var ismatch = ismatch || {};
      * 表单提交
      * @param  {Object} options  选项
      */
-    ismatch.form.submit = function (options) {
+    IsMatch.form.submit = function (options) {
         var defaults = {
             url: "",
             params: [],
@@ -359,7 +359,7 @@ var ismatch = ismatch || {};
         };
         var options = $.extend(defaults, options);
         //显示正在加载遮罩层
-        //ismatch.common.loading(true, options.loading);
+        //IsMatch.common.loading(true, options.loading);
         //0毫秒后发起ajax请求
         window.setTimeout(function () {
             if ($('[name=__RequestVerificationToken]').length > 0) {
@@ -369,17 +369,17 @@ var ismatch = ismatch || {};
                 url: options.url,
                 data: options.params,
                 beforeSend: function () {
-                    ismatch.common.loading(true, options.loading);
+                    IsMatch.common.loading(true, options.loading);
                 },
                 success: function (data) {
                     if (data.Status === 1) {
                         options.success(data);
-                        ismatch.modal.msg(data.Msg, data.Status);
+                        IsMatch.modal.msg(data.Msg, data.Status);
                         if (options.close == true) {
-                            ismatch.modal.close();
+                            IsMatch.modal.close();
                         }
                     } else {
-                        ismatch.modal.alert(data.Msg, data.Status);
+                        IsMatch.modal.alert(data.Msg, data.Status);
                     }
                 }
             });
@@ -389,7 +389,7 @@ var ismatch = ismatch || {};
      * 表单提交删除操作
      * @param  {Object} options  选项
      */
-    ismatch.form.delete = function (options) {
+    IsMatch.form.delete = function (options) {
         var defaults = {
             prompt: "注：您确定要删除该项数据吗？",
             url: "",
@@ -403,26 +403,26 @@ var ismatch = ismatch || {};
             options.params["__RequestVerificationToken"] = $('[name=__RequestVerificationToken]').val();
         }
         //弹出是否确认删除
-        ismatch.modal.confirm(options.prompt, function (r) {
+        IsMatch.modal.confirm(options.prompt, function (r) {
             if (r) {
-                //ismatch.common.loading(true, options.loading);
+                //IsMatch.common.loading(true, options.loading);
                 //显示正在加载遮罩层
                 window.setTimeout(function () {
                     $.ajax({
                         url: options.url,
                         data: options.params,
                         beforeSend: function () {
-                            ismatch.common.loading(true, options.loading);
+                            IsMatch.common.loading(true, options.loading);
                         },
                         success: function (data) {
                             if (data.Status === 1) {
                                 options.success(data);
-                                ismatch.modal.msg(data.Msg, data.Status);
+                                IsMatch.modal.msg(data.Msg, data.Status);
                                 if (options.close == true) {
-                                    ismatch.modal.close();
+                                    IsMatch.modal.close();
                                 }
                             } else {
-                                ismatch.modal.alert(data.Msg, data.Status);
+                                IsMatch.modal.alert(data.Msg, data.Status);
                             }
                         }
                     });
@@ -435,7 +435,7 @@ var ismatch = ismatch || {};
      * @param  {Object} $elements   jquery对象集合或者单个
      * @param  {Object} options    选项
      */
-    ismatch.form.bindSelect = function ($elements, options) {
+    IsMatch.form.bindSelect = function ($elements, options) {
         var defaults = {
             id: "ID",
             text: "Name",
@@ -491,7 +491,7 @@ var ismatch = ismatch || {};
      * @param  {String} id  表单id
      * @return {Boolean} 是否验证通过
      */
-    ismatch.form.valid = function (id) {
+    IsMatch.form.valid = function (id) {
         return $("#" + id).valid({
             errorPlacement: function (error, element) {
                 element.parents('.formValue').addClass('has-error');
@@ -513,7 +513,7 @@ var ismatch = ismatch || {};
      * @param  {String} id  表单id
      * @return {Boolean} 键值对
      */
-    ismatch.form.serialize = function (id) {
+    IsMatch.form.serialize = function (id) {
         var element = $("#" + id);
         var postdata = {};
         element.find('input,select,textarea').each(function (r) {
@@ -562,7 +562,7 @@ var ismatch = ismatch || {};
      * @param  {String} id   表单id
      * @param  {Object} data 数据
      */
-    ismatch.form.deserialize = function (id, data) {
+    IsMatch.form.deserialize = function (id, data) {
         var element = $("#" + id);
         if (!data) {
             return;
@@ -601,88 +601,74 @@ var ismatch = ismatch || {};
      * 表格模块
      * @property {Object} 
      */
-    ismatch.grid = ismatch.grid || {};
+    IsMatch.grid = IsMatch.grid || {};
     /**
      * 在指定控件上生成表格数据
      * @param  {String} id      控件id
      * @param  {Object} options 选项
      */
-    ismatch.grid.render = function (id, options) {
+    IsMatch.grid.render = function (id, options) {
         var defaults = {
-            datatype: "json",
-            autowidth: true,
-            rownumbers: true,
-            shrinkToFit: false,
-            gridview: true,
-            /**ajax请求失败时调用**/
-            loadError: function (xhr, textStatus, errorThrown) {
-                ismatch.common.loading(false);
+            url: '', //请求后台的URL（*）
+            method: 'GET', //请求方式（*）
+            toolbar: '#toolbar', //工具按钮用哪个容器
+            striped: true, //是否显示行间隔色
+            cache: false, //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
+            pagination: true, //是否显示分页（*）
+            sortable: false, //是否启用排序
+            sortOrder: "asc", //排序方式
+            queryParams: function(params) { //传递参数（*）
+                return {
+                    PageSize: params.limit, // 页面大小
+                    PageIndex: params.offset, //页码
+                    keyword: $('#txtKey').val()
+                };
+            },
+            sidePagination: "server", //分页方式：client客户端分页，server服务端分页（*）
+            pageNumber: 1, //初始化加载第一页，默认第一页
+            pageSize: 20, //每页的记录行数（*）
+            pageList: [20, 50, 100], //可供选择的每页的行数（*）
+            search: false, //是否显示表格搜索，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
+            strictSearch: true,
+            showColumns: true, //是否显示所有的列
+            showRefresh: false, //是否显示刷新按钮
+            minimumCountColumns: 2, //最少允许的列数
+            clickToSelect: true, //是否启用点击选中行
+            height: 500, //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
+            uniqueId: "ID", //每一行的唯一标识，一般为主键列
+            showToggle: true, //是否显示详细视图和列表视图的切换按钮
+            cardView: false, //是否显示详细视图
+            detailView: false, //是否显示父子表
+            onLoadError: function(status) { // 远程数据加载失败时触发成功。
+                IsMatch.common.loading(false);
                 //登陆超时
-                if (xhr.status == 401) {
-                    ismatch.modal.alert("登陆超时，请重新登陆！", 0);
-                    setTimeout(function () {
-                        top.location.href = "/Login/Index";
-                    }, 1000);
-                } else if (xhr.status == 403) {
-                    ismatch.modal.alert("无权限访问！", 0);
+                if (status == 401) {
+                    IsMatch.modal.alert("登陆超时，请重新登陆！", 0);
+                    setTimeout(function() {
+                            top.location.href = "/Login/Index";
+                        },
+                        1000);
+                } else if (status == 403) {
+                    IsMatch.modal.alert("无权限访问！", 0);
+                } else {
+                    IsMatch.modal.msg(status + '未处理的错误。', 0);
                 }
-                else {
-                    ismatch.modal.msg(errorThrown, 0);
-                }
             },
-            //json读写器，用来跟服务器端返回的数据做对应
-            jsonReader: {
-                //数据字段
-                root: "Data",
-                //页码
-                page: "PageIndex",
-                //总页数
-                total: "PageCount",
-                //总记录数
-                records: "TotalCount",
-            },
-            //树结构json读写器，用来跟服务器端返回的数据做对应
-            treeReader: {
-                //层级
-                level_field: "Level",
-                //父级ID
-                parent_id_field: "ParentID",
-                //是否是叶子节点
-                leaf_field: "IsLeaf",
-                //是否展开
-                expanded_field: "Expanded"
-            },
-            //分页相关
-            rowNum: 20,
-            rowList: [20, 50, 100],
-            prmNames: {
-                page: "PageIndex",
-                rows: "PageCount",
-                sort: "Sort",
-                order: "Order",
+            responseHandler: function (res) {// 特殊处理Data为rows
+                res.rows = res.Data;
+                delete res.Data;
+                return res;
             }
         };
-        var options = $.extend(defaults, options);
+        options = $.extend(defaults, options);
         var $element = $("#" + id);
-        options["onSelectRow"] = function (rowid) {
-            var length = $(this).jqGrid("getGridParam", "selrow").length;
-            var $operate = $(".operate");
-            if (length > 0) {
-                $operate.animate({ "left": 0 }, 200);
-            } else {
-                $operate.animate({ "left": '-100.1%' }, 200);
-            }
-            $operate.find('.close').click(function () {
-                $operate.animate({ "left": '-100.1%' }, 200);
-            });
-        };
-        return $element.jqGrid(options);
-    };
+        return $element.bootstrapTable(options);
+    },
     /**
-     * 获取指定列的值
+     * 获取指定列的值 2018年11月11日22:51:05 todo: 
      * @param  {String} id      控件id
      */
-    ismatch.grid.getRowValue = function (id) {
+    IsMatch.grid.getRowValue = function (id) {
         var $grid = $("#" + id);
         var selectedRowIds = $grid.jqGrid("getGridParam", "selarrrow");
         if (selectedRowIds != "") {
@@ -704,7 +690,7 @@ var ismatch = ismatch || {};
      * 授权模块
      * @property {Object} 
      */
-    ismatch.auth = ismatch.auth || {};
+    IsMatch.auth = IsMatch.auth || {};
     /**
     * 获取当前页面所拥有的权限对象
     * @return {Object}
@@ -732,13 +718,13 @@ var ismatch = ismatch || {};
      * 当前页面所拥有的菜单权限对象，缓存对象
      * @return {Object}
      */
-    ismatch.auth.current = null;
+    IsMatch.auth.current = null;
 
     /**
      * 允许的按钮
      * @param  {Object}  options 选项 
      */
-    ismatch.auth.grantedButtons = function (options) {
+    IsMatch.auth.grantedButtons = function (options) {
         var defaults = {
             location: 1,//按钮位置 1 初始 2 列表
             replaceValue: 0,//参数替换值
@@ -747,11 +733,11 @@ var ismatch = ismatch || {};
         //var url = location.href;
         var result = "";
         //权限对象是否缓存，没有则缓存上
-        if (!ismatch.auth.current) {
+        if (!IsMatch.auth.current) {
             //获取当前页面所拥有的权限对象
-            ismatch.auth.current = getMenuPermission();
+            IsMatch.auth.current = getMenuPermission();
         }
-        var current = ismatch.auth.current;
+        var current = IsMatch.auth.current;
         //授权的按钮
         if (current && current.Buttons && current.Buttons.length > 0) {
             $.each(current.Buttons, function (k, v) {
@@ -782,13 +768,13 @@ var ismatch = ismatch || {};
      * 验证给定字段是否授权
      * @param  {Object}  options 选项 
      */
-    ismatch.auth.fieldIsGranted = function (fieldName) {
+    IsMatch.auth.fieldIsGranted = function (fieldName) {
         //权限对象是否缓存，没有则缓存上
-        if (!ismatch.auth.current) {
+        if (!IsMatch.auth.current) {
             //获取当前页面所拥有的权限对象
-            ismatch.auth.current = getMenuPermission();
+            IsMatch.auth.current = getMenuPermission();
         }
-        var current = ismatch.auth.current;
+        var current = IsMatch.auth.current;
         //是否设置了字段权限
         if (current && current.RoleMenu && current.RoleMenu.FieldNames) {
             var fieldArray = current.RoleMenu.FieldNames.split(",");
@@ -827,32 +813,32 @@ $(function () {
         type: "post",
         dataType: "json",
         error: function (xhr, textStatus, errorThrown) {
-            ismatch.common.loading(false);
+            IsMatch.common.loading(false);
             //登陆超时
             if (xhr.status == 401) {
-                ismatch.modal.alert("登陆超时，请重新登陆！", 0);
+                IsMatch.modal.alert("登陆超时，请重新登陆！", 0);
                 setTimeout(function () {
                     top.location.href = "/Login/Index";
                 }, 1000);
             } else if (xhr.status == 403) {
-                ismatch.modal.alert("无权限访问" + xhr.statusText + "！", 0);
+                IsMatch.modal.alert("无权限访问" + xhr.statusText + "！", 0);
             }
             else {
-                ismatch.modal.msg(errorThrown, 0);
+                IsMatch.modal.msg(errorThrown, 0);
             }
         },
         complete: function () {
-            ismatch.common.loading(false);
+            IsMatch.common.loading(false);
         }
     });
-    //设置select2默认样式
-    if ($.fn.select2) {
-        $.fn.select2.defaults.set("theme", "bootstrap");
-    }
-    //设置样式为select2-control的选择框为select2组件
-    ismatch.form.bindSelect($(".select2-control"));
-    //body设置主题样式
-    document.body.className = localStorage.getItem('config-skin');
-    $("[data-toggle='tooltip']").tooltip();
+    ////设置select2默认样式
+    //if ($.fn.select2) {
+    //    $.fn.select2.defaults.set("theme", "bootstrap");
+    //}
+    ////设置样式为select2-control的选择框为select2组件
+    //IsMatch.form.bindSelect($(".select2-control"));
+    ////body设置主题样式
+    //document.body.className = localStorage.getItem('config-skin');
+    //$("[data-toggle='tooltip']").tooltip();
 });
 

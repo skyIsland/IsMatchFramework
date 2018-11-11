@@ -83,16 +83,16 @@ function ViewModel(options) {
                 viewrecords: true
             };
             options = $.extend(defaults, options || {});
-            var grid = cloud.grid.render(options.gridListControlID, options);
+            var grid = IsMatch.grid.render(options.gridListControlID, options);
             //如果设置搜索按钮控件id，说明需要搜索事件
-            if (options.btnSearchControlID) {
-                //绑定搜索按钮事件
-                $("#" + options.btnSearchControlID).click(function () {
-                    $("#" + options.gridListControlID).jqGrid("setGridParam", {
-                        postData: options.getSearchData()
-                    }).trigger('reloadGrid');
-                });
-            }
+            //if (options.btnSearchControlID) {
+            //    //绑定搜索按钮事件
+            //    $("#" + options.btnSearchControlID).click(function () {
+            //        $("#" + options.gridListControlID).jqGrid("setGridParam", {
+            //            postData: options.getSearchData()
+            //        }).trigger('reloadGrid');
+            //    });
+            //}
         },
         /**
          * 表单加载数据
@@ -110,7 +110,7 @@ function ViewModel(options) {
                 //数据加载成功后的回调
                 success: function (result) {
                     //将数据反序列化绑定到表单上
-                    cloud.form.deserialize(options.formControlID, result.Data);
+                    IsMatch.form.deserialize(options.formControlID, result.Data);
                     //查看详情页面需要设置表单控件只读
                     if (options.type == "detail") {
                         var $form = $("#" + options.formControlID);
@@ -121,7 +121,7 @@ function ViewModel(options) {
             };
             options = $.extend(defaults, options || {});
             //加载数据
-            cloud.form.load({
+            IsMatch.form.load({
                 url: self.dataQueryOneUrl,
                 params: options.params,
                 success: options.success
@@ -133,21 +133,21 @@ function ViewModel(options) {
          */
         submitForm: function (url) {
             var formID = "form1";
-            if (!cloud.form.valid(formID)) {
+            if (!IsMatch.form.valid(formID)) {
                 return false;
             }
-            cloud.form.submit({
+            IsMatch.form.submit({
                 url: url,
-                params: cloud.form.serialize(formID),
+                params: IsMatch.form.serialize(formID),
                 success: function (result) {
-                    cloud.common.currentWindow().$("#gridList").resetSelection();
-                    cloud.common.currentWindow().$("#gridList").trigger("reloadGrid");
+                    IsMatch.common.currentWindow().$("#gridList").resetSelection();
+                    IsMatch.common.currentWindow().$("#gridList").trigger("reloadGrid");
                 }
             });
         },
         //点击Add按钮弹出“添加数据”对话框
         onDataAdding: function () {
-            cloud.modal.open({
+            IsMatch.modal.open({
                 id: "Form",
                 title: "新增",
                 url: self.dataAddUrl,
@@ -172,10 +172,10 @@ function ViewModel(options) {
         //点击编辑按钮弹出“修改数据”对话框
         onDataUpdating: function (id) {
             if (!id) {
-                cloud.modal.alert("id不能为空！", 0);
+                IsMatch.modal.alert("id不能为空！", 0);
                 return;
             }
-            cloud.modal.open({
+            IsMatch.modal.open({
                 id: "Form",
                 title: "编辑",
                 url: self.dataUpdateUrl + "?id=" + id,
@@ -200,10 +200,10 @@ function ViewModel(options) {
         //点击查看详情按钮弹出“详情”对话框
         onDataDetailing: function (id) {
             if (!id) {
-                cloud.modal.alert("id不能为空！", 0);
+                IsMatch.modal.alert("id不能为空！", 0);
                 return;
             }
-            cloud.modal.open({
+            IsMatch.modal.open({
                 id: "Form",
                 title: "详情",
                 url: self.dataDetailUrl + "?type=detail&id=" + id,
@@ -215,10 +215,10 @@ function ViewModel(options) {
         //点击删除按钮删除当前记录
         onDataDeleting: function (id) {
             if (!id) {
-                cloud.modal.alert("id不能为空！", 0);
+                IsMatch.modal.alert("id不能为空！", 0);
                 return;
             }
-            cloud.form.delete({
+            IsMatch.form.delete({
                 url: self.dataDeleteUrl,
                 params: { id: id },
                 success: function (result) {
