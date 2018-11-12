@@ -727,9 +727,9 @@ var IsMatch = IsMatch || {};
     IsMatch.auth.grantedButtons = function (options) {
         var defaults = {
             location: 1,//按钮位置 1 初始 2 列表
-            replaceValue: 0,//参数替换值
+            replaceValue: 0//参数替换值
         };
-        var options = $.extend(defaults, options);
+        options = $.extend(defaults, options);
         //var url = location.href;
         var result = "";
         //权限对象是否缓存，没有则缓存上
@@ -801,8 +801,38 @@ var IsMatch = IsMatch || {};
             if (action(v)) {
                 reval.push(v);
             }
-        })
+        });
         return reval;
+    };
+    $.DateFormat = function (jsondate) {// 格式化JSON时间为 yyyy年MM月dd日 hh:mm:ss
+        if (!jsondate) return "";
+        jsondate = jsondate.replace("/Date(", "").replace(")/", "");
+        if (jsondate.indexOf("+") > 0) {
+            jsondate = jsondate.substring(0, jsondate.indexOf("+"));
+        }
+        else if (jsondate.indexOf("-") > 0) {
+            jsondate = jsondate.substring(0, jsondate.indexOf("-"));
+        }
+
+        var date = new Date(parseInt(jsondate, 10));
+        var month = date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
+        var currentDate = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+        var currentHours = date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
+        var currentMin = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
+        var currentSec = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
+
+        return date.getFullYear()
+            + "年"
+            + month
+            + "月"
+            + currentDate
+            + "日"
+            + " "
+            + currentHours
+            + ":"
+            + currentMin
+            + ":"
+            + currentSec;
     };
 
 })(jQuery);

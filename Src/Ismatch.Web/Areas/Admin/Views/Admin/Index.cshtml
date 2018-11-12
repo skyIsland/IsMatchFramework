@@ -62,11 +62,11 @@
                 //列模型
                 columns: [{ title: "主键", field: "ID", visible: false, key: true },
                 {
-                    title: "用户名", field: "field", width: 80, align: "left"
+                    title: "用户名", field: "Name", width: '8%', align: "left"
                 },
-                { title: "姓名", field: "Displayfield", width: 80, align: "left" },
+                { title: "姓名", field: "DisplayName", width: '8%', align: "left" },
                 {
-                    title: "性别", field: "Sex", width: 80, align: "center",
+                    title: "性别", field: "Sex", width: '8%', align: "center",
                     //数据格式化
                     formatter: function (value) {
                         switch (value) {
@@ -82,35 +82,43 @@
                     }
                 },
                 {
-                    title: "电话", field: "Phone", width: 80, align: "left"
+                    title: "电话", field: "Phone", width: '8%', align: "left"
                 },
                 {
-                    title: "是否启用", field: "Enable", width: 60, align: "center",
+                    title: "是否启用", field: "Enable", width: '6%', align: "center",
                     formatter: function (value, options, rowObject) {
-                        if (value) {
-                            return '<span class=\"title title-success\">是</span>';
-                        } else {
-                            return '<span class=\"title title-default\">否</span>';
-                        }
+                        //if (value) {
+                        //    return '<span class=\"title title-success\">是</span>';
+                        //} else {
+                        //    return '<span class=\"title title-default\">否</span>';
+                        //}
+                        if (value) return '是';
+                        else return '否';
                     }
                 },
                 {
-                    title: "登陆次数", field: "Logins", width: 50, align: "center"
+                    title: "登陆次数", field: "Logins", width: '5%', align: "center"
                 },
                 {
-                    title: "最后登陆", field: "LastLogin", width: 120, align: "center",
-                    formatter: "date", formatoptions: { srcformat: 'Y-m-d H:i:s', newformat: 'Y-m-d H:i:s' }
+                    title: "最后登陆", field: "LastLogin", width: '12%', align: "center",
+                    formatter: function (value) {
+                        return $.DateFormat(value);
+                    }
                 },
                 {
-                    title: "创建时间", field: "CreateDate", width: 120, align: "center",
-                    formatter: "date", formatoptions: { srcformat: 'Y-m-d H:i:s', newformat: 'Y-m-d H:i:s' }
+                    title: "创建时间", field: "CreateDate", width: '12%', align: "center",
+                    formatter: function (value) {
+                        return $.DateFormat(value);
+                    }
                 },
                 {
-                    title: "更新时间", field: "UpdateDate", width: 120, align: "center",
-                    formatter: "date", formatoptions: { srcformat: 'Y-m-d H:i:s', newformat: 'Y-m-d H:i:s' }
+                    title: "更新时间", field: "UpdateDate", width: '12%', align: "center",
+                    formatter: function (value) {
+                        return $.DateFormat(value);
+                    }
                 },
                 {
-                    title: '操作', field: 'ID', width: 250, align: 'center', classes: 'operate', sortable: false,
+                    title: '操作', field: 'ID', width: '25%', align: 'center', classes: 'operate', sortable: false,
                     /**
                      * 数据格式化
                      * 参数 value 列值 options 选项 row 行数据
