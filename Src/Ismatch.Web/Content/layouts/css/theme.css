@@ -1,5 +1,7 @@
 a.dropdown-toggle > span, ul.sub-menu > li > a > span {
     margin-left: 10px;
 }
-
+.topPanel {
+    height: 20px;
+}
 

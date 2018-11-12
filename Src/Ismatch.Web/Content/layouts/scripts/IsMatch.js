@@ -630,13 +630,13 @@ var IsMatch = IsMatch || {};
             pageList: [20, 50, 100], //可供选择的每页的行数（*）
             search: false, //是否显示表格搜索，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
             strictSearch: true,
-            showColumns: true, //是否显示所有的列
+            showColumns: false, //是否显示所有的列
             showRefresh: false, //是否显示刷新按钮
             minimumCountColumns: 2, //最少允许的列数
             clickToSelect: true, //是否启用点击选中行
             height: 500, //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
             uniqueId: "ID", //每一行的唯一标识，一般为主键列
-            showToggle: true, //是否显示详细视图和列表视图的切换按钮
+            showToggle: false, //是否显示详细视图和列表视图的切换按钮
             cardView: false, //是否显示详细视图
             detailView: false, //是否显示父子表
             onLoadError: function(status) { // 远程数据加载失败时触发成功。
@@ -654,9 +654,11 @@ var IsMatch = IsMatch || {};
                     IsMatch.modal.msg(status + '未处理的错误。', 0);
                 }
             },
-            responseHandler: function (res) {// 特殊处理Data为rows
+            responseHandler: function (res) {// 特殊处理Data->rows,TotalCount->total
                 res.rows = res.Data;
+                res.total = res.TotalCount;
                 delete res.Data;
+                delete res.TotalCount;
                 return res;
             }
         };
