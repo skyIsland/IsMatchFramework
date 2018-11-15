@@ -3,8 +3,14 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Index_Layout.cshtml";
 }
-
 <div class="topPanel">
+    <div class="toolbar">
+        <div class="btn-group">
+            <a class="btn btn-primary" onclick="IsMatch.common.reload();"><span class="glyphicon glyphicon-refresh"></span></a>
+        </div>
+        <div id="btnInit" class="btn-group">
+        </div>
+    </div>
     <div class="search">
         <table>
             <tr>
@@ -124,8 +130,9 @@
                 // 默认排序顺序
                 sortOrder: "asc"
             });
+
             // 添加授权的初始按钮
-            //$("#btnInit").append(IsMatch.auth.grantedButtons({ location: 1 }));
+            $("#btnInit").append(IsMatch.auth.grantedButtons({ location: 1 }));
         });
     </script>
 
