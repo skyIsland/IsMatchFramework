@@ -323,7 +323,7 @@ var IsMatch = IsMatch || {};
             loading: "数据加载中，请稍候…",
             success: null
         };
-        var options = $.extend(defaults, options);
+        options = $.extend(defaults, options);
         //0毫秒后发起ajax请求
         window.setTimeout(function () {
             $.ajax({

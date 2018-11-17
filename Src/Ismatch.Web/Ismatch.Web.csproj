@@ -169,6 +169,11 @@
     <Content Include="Content\global\js\plugins\roboto\Roboto-Thin.svg" />
     <Content Include="Content\global\js\plugins\roboto\Roboto-ThinItalic.svg" />
     <Content Include="Content\global\js\plugins\cookie\jquery.cookie.js" />
+    <Content Include="Content\global\js\plugins\select2\i18n\zh-CN.js" />
+    <Content Include="Content\global\js\plugins\select2\select2-bootstrap.min.css" />
+    <Content Include="Content\global\js\plugins\select2\select2.min.css" />
+    <Content Include="Content\global\js\plugins\select2\select2.min.js" />
+    <Content Include="Content\global\js\plugins\validate\jquery.validate.min.js" />
     <Content Include="Content\layouts\css\font.css" />
     <Content Include="Content\layouts\css\theme.css" />
     <Content Include="Content\layouts\css\ui.css" />
