@@ -18,37 +18,41 @@
                             <div class="form-group row">
                                 <label for="Name" class="col-sm-2 col-form-label text-sm-right">用户名</label>
                                 <div class=" col-sm-4">
-                                    <input id="Name" name="Name" type="text" class="form-control form-control-sm">
+                                    <input id="Name" name="Name" type="text" class="form-control form-control-xs">
                                     <input id="ID" name="ID" type="hidden" />
                                 </div>
                                 <label for="Password" class="col-12 col-sm-2 col-form-label text-sm-right">密码</label>
                                 <div class="col-12 col-sm-4 ">
-                                    <input id="Password" name="Password" type="password" class="form-control form-control-sm">
+                                    <input id="Password" name="Password" type="password" class="form-control form-control-xs">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="RoleIDs" class="col-sm-2 col-form-label text-sm-right">角色</label>
-                                <div class=" col-sm-10">
+                                <div class="col-sm-10">
                                     <select id="RoleIDs" name="RoleIDs" class="form-control required" multiple="multiple"></select>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="" class="col-sm-2 col-form-label text-sm-right">选项</label>
-                                <div class="ckbox">
-                                    <input id="Enable" name="Enable" type="checkbox" checked="checked" class="form-control form-control-sm"><label for="Enable">是否启用</label>
-                                </div>
-                                <div class="ckbox">
-                                    <input id="IsAdmin" name="IsAdmin" type="checkbox" checked="checked" class="form-control form-control-sm"><label for="IsAdmin">是否超管</label>
+                                <div class="col-12 col-sm-10 col-lg-6 form-check mt-2">
+                                    <label class="custom-control custom-checkbox custom-control-inline">
+                                        <input id="Enable" name="Enable" type="checkbox" checked="" class="custom-control-input">
+                                        <span class="custom-control-label custom-control-color">是否启用</span>
+                                    </label>
+                                    <label class="custom-control custom-checkbox custom-control-inline">
+                                        <input id="IsAdmin" name="IsAdmin" type="checkbox" class="custom-control-input">
+                                        <span class="custom-control-label custom-control-color">是否超管</span>
+                                    </label>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="DisplayName" class="col-sm-2 col-form-label text-sm-right">姓名</label>
                                 <div class=" col-sm-4">
-                                    <input id="DisplayName" name="DisplayName" type="text" class="form-control form-control-sm">
+                                    <input id="DisplayName" name="DisplayName" type="text" class="form-control form-control-xs">
                                 </div>
                                 <label for="Sex" class="col-12 col-sm-2 col-form-label text-sm-right">性别</label>
-                                <div class="col-12 col-sm-4 ">
-                                    <select id="Sex" name="Sex" class="form-control form-control-sm select2-control required">
+                                <div class="col-sm-4 ">
+                                    <select id="Sex" name="Sex" class="form-control form-control-xs required">
                                         <option value="0">未知</option>
                                         <option value="1">男</option>
                                         <option value="2">女</option>
@@ -58,17 +62,17 @@
                             <div class="form-group row">
                                 <label for="WeChat" class="col-sm-2 col-form-label text-sm-right">微信</label>
                                 <div class=" col-sm-4">
-                                    <input id="WeChat" name="WeChat" type="text" class="form-control form-control-sm">
+                                    <input id="WeChat" name="WeChat" type="text" class="form-control form-control-xs">
                                 </div>
                                 <label for="F_Email" class="col-12 col-sm-2 col-form-label text-sm-right">邮箱</label>
                                 <div class="col-12 col-sm-4 ">
-                                    <input id="F_Email" name="F_Email" type="text" class="form-control form-control-sm">
+                                    <input id="F_Email" name="F_Email" type="text" class="form-control form-control-xs">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="Phone" class="col-sm-2 col-form-label text-sm-right">电话</label>
                                 <div class=" col-sm-4">
-                                    <input id="Phone" name="Phone" type="text" class="form-control form-control-sm">
+                                    <input id="Phone" name="Phone" type="text" class="form-control form-control-xs">
                                 </div>
                             </div>
                             <div class="form-group row">

@@ -19312,7 +19312,7 @@ select.form-control-xs:not([size]):not([multiple]) {
 
 .form-group.row {
   margin-bottom: 0;
-  padding: 12px 0;
+  padding: 5px 0;
 }
 
 .form-horizontal .form-group.row .col-form-label {
