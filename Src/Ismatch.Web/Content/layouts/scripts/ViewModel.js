@@ -142,8 +142,8 @@ function ViewModel(options) {
                 url: url,
                 params: IsMatch.form.serialize(formID),
                 success: function (result) {
-                    IsMatch.common.currentWindow().$("#gridList").resetSelection();
-                    IsMatch.common.currentWindow().$("#gridList").trigger("reloadGrid");
+                    IsMatch.common.currentWindow().contentWindow.$("#gridList").bootstrapTable('uncheckAll');
+                    IsMatch.common.currentWindow().contentWindow.$("#gridList").bootstrapTable('refresh');
                 }
             });
         },

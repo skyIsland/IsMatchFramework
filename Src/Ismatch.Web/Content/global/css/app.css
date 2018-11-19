@@ -19281,11 +19281,11 @@ label {
 .form-control-xs {
   height: 30px;
   font-size: 0.9231rem;
-  padding: 6px 9px;
+  padding: 2px 9px;
 }
 
 select.form-control-xs:not([size]):not([multiple]) {
-  height: 3.1384rem;
+  height: 2.1384rem;
 }
 
 .form-control-sm, .input-group-sm > .form-control,
