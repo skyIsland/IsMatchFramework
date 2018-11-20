@@ -35,61 +35,73 @@
 @section Scripts{
     <script type="text/javascript">
         var options = {
-            //标题
+            // 标题
             title: "角色管理",
-            //数据查询地址
+
+            // 数据查询地址
             dataQueryUrl: "/Admin/Role/List",
-            //数据添加地址，视图与操作是一个地址，只是请求方式及参数不同
+
+            // 数据添加地址，视图与操作是一个地址，只是请求方式及参数不同
             dataAddUrl: "/Admin/Role/Add",
-            //数据编辑地址，视图与操作是一个地址，只是请求方式及参数不同
+
+            // 数据编辑地址，视图与操作是一个地址，只是请求方式及参数不同
             dataUpdateUrl: "/Admin/Role/Edit",
-            //数据查看详情地址
+
+            // 数据查看详情地址
             dataDetailUrl: "/Admin/Role/Detail",
-            //数据删除地址
+
+            // 数据删除地址
             dataDeleteUrl: "/Admin/Role/Delete",
-            //弹窗宽度
+
+            // 弹窗宽度
             modalWidth: "1000px",
-            //弹窗高度
-            modalHeight: "600px",
+
+            // 弹窗高度
+            modalHeight: "600px"
         };
-        //视图模型
+
+        // 视图模型
         var viewModel = new ViewModel(options);
         $(function () {
-            //显示列表数据
+            // 显示列表数据
             viewModel.showGridList({
-                //获取数据的地址
+
+                // 获取数据的地址
                 url: viewModel.dataQueryUrl,
-                //列模型
-                colModel: [
-                    { label: "主键", name: "ID", hidden: true, key: true },
-                    { label: "名称", name: "Name", width: 200, align: "left" },
+
+                // 列模型
+                columns: [
+                    //{ title: "主键", field: "ID", hidden: true, key: true },
+                    { title: "名称", field: "Name", width: '20%', align: "center" },
                     {
-                        label: "更新时间", name: "UpdateDate", width: 120, align: "center",
-                        formatter: "date", formatoptions: { srcformat: 'Y-m-d H:i:s', newformat: 'Y-m-d H:i:s' }
+                        title: "更新时间", field: "UpdateDate", width: '20%', align: "center",
+                        formatter: function (value) {
+                            return $.DateFormat(value);
+                        }
                     },
                     {
-                        label: "排序", name: "Sort", width: 50, align: "center"
+                        title: "排序", field: "Sort", width: '10%', align: "center", sortStable: true
                     },
-                    { label: '备注', name: 'Remark', width: 200, align: 'left', sortable: false, },
+                    { title: '备注', field: 'Remark', width: '20%', align: 'center' },
                     {
-                        label: '操作', name: 'ID', width: 250, align: 'center', classes: 'operate', sortable: false,
-                        /**
-                         * 数据格式化
-                         * 参数 value 列值 options 选项 row 行数据
-                         */
+                        title: '操作', field: 'ID', width: '30%', align: 'center', class: 'operate',
                         formatter: function (value, options, row) {
-                            //设置授权的列表按钮
+
+                            // 设置授权的列表按钮
                             var html = IsMatch.auth.grantedButtons({ location: 2, replaceValue: value });
                             return html;
                         }
-                    },
+                    }
                 ],
-                //默认排序字段
-                sortname: "Sort",
-                //默认排序顺序
+
+                // 默认排序字段
+                sortfield: "Sort",
+
+                // 默认排序顺序
                 sortorder: "desc",
             });
-            //添加授权的初始按钮
+
+            // 添加授权的初始按钮
             $("#btnInit").append(IsMatch.auth.grantedButtons({ location: 1 }));
         });
     </script>
