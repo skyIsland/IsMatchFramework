@@ -639,6 +639,7 @@ var IsMatch = IsMatch || {};
             showToggle: false, //是否显示详细视图和列表视图的切换按钮
             cardView: false, //是否显示详细视图
             detailView: false, //是否显示父子表
+            smartDisplay: false,// 设置为 true 是程序自动判断显示分页信息和 card 视图。
             onLoadError: function(status) { // 远程数据加载失败时触发成功。
                 IsMatch.common.loading(false);
                 //登陆超时

@@ -79,10 +79,7 @@ function ViewModel(options) {
                             return html;
                         }
                     }
-                ],
-                pager: "#gridPager",
-                // 是否显示分页
-                viewrecords: true
+                ]
             };
             options = $.extend(defaults, options || {});
             var grid = IsMatch.grid.render(options.gridListControlID, options);
