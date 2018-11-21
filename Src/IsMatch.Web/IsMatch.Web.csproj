@@ -132,6 +132,8 @@
     <Content Include="Content\global\images\user-profile-display.png" />
     <Content Include="Content\global\images\yt-icon.png" />
     <Content Include="Content\global\js\app.min.js" />
+    <Content Include="Content\global\js\plugins\bootstrap-paginator\bootstrap-paginator.js" />
+    <Content Include="Content\global\js\plugins\bootstrap-paginator\bootstrap-paginator.min.js" />
     <Content Include="Content\global\js\plugins\bootstrap-table\bootstrap-table.css" />
     <Content Include="Content\global\js\plugins\bootstrap-table\bootstrap-table.js" />
     <Content Include="Content\global\js\plugins\bootstrap-table\locale\bootstrap-table-ja-JP.js" />
@@ -212,6 +214,8 @@
     <Content Include="Content\layouts\scripts\IsMatch.js" />
     <Content Include="Content\layouts\scripts\index.js" />
     <Content Include="Content\layouts\scripts\ViewModel.js" />
+    <Content Include="Content\pages\admin\Button\button.js" />
+    <Content Include="Content\pages\admin\Icon\icon.js" />
     <Content Include="Content\pages\login\index.css" />
     <Content Include="Content\pages\login\index.js" />
     <Content Include="favicon.ico" />
