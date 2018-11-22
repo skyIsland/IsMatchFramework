@@ -142,6 +142,10 @@
     <Content Include="Content\global\js\plugins\bootstrap\css\bootstrap.min.css" />
     <Content Include="Content\global\js\plugins\bootstrap\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\global\js\plugins\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Content\global\js\plugins\echarts\echarts-all.js" />
+    <Content Include="Content\global\js\plugins\echarts\echarts.js" />
+    <Content Include="Content\global\js\plugins\echarts\echarts.min.js" />
+    <Content Include="Content\global\js\plugins\echarts\infographic.js" />
     <Content Include="Content\global\js\plugins\jquery\jquery.min.js" />
     <Content Include="Content\global\js\plugins\layer\layer.js" />
     <Content Include="Content\global\js\plugins\layer\mobile\layer.js" />
