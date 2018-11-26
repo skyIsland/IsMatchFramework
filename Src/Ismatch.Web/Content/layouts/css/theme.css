@@ -3,23 +3,33 @@ a.dropdown-toggle > span, ul.sub-menu > li > a > span {
 }
 
 .topPanel {
-    height: 20px;
+    height: 50px;
+}
+.topPanel .toolbar {
+    float: right;
+    padding-right: 10px;
+    padding-top: 10px;
 }
 
-    .topPanel .toolbar {
-        float: right;
-        padding-right: 10px;
-    }
-
-    .topPanel .search {
-        float: left;
-        padding-left: 10px;
-    }
+.topPanel .search {
+    float: left;
+    padding-left: 10px;
+    padding-top:10px;
+}
 
 td.operate a {
     padding-left: 5px;
 }
-
+.topPanel .toolbar .operate {
+    line-height: 50px;
+    height: 50px;
+    width: 100%;
+    background: #fff;
+    position: absolute;
+    top: 0px;
+    left: -100.1%;
+    z-index: 999;
+}
 /*
  * Metro UI CSS
  * Copyright 2012 Sergey Pimenov

@@ -49,14 +49,14 @@
     <script src="~/Content/global/js/plugins/bootstrap-paginator/bootstrap-paginator.min.js"></script>
     <script src="~/Content/pages/admin/Icon/icon.js"></script>
     <script type="text/javascript">
-        //获取选中图标id
+        // 获取选中图标id
         function getSelectedID() {
             var gridList = $("#gridList");
             var id = gridList.find("li.selected").data("id");
             return id;
         }
 
-        //编辑
+        // 编辑
         function edit() {
             var id = getSelectedID();
             if (!id) {
@@ -79,7 +79,8 @@
                 }
             });
         }
-        //查看详情
+
+        // 查看详情
         function detail() {
             var id = getSelectedID();
             if (!id) {
@@ -95,7 +96,8 @@
                 btn: null
             });
         }
-        //删除
+
+        // 删除
         function remove() {
             var id = getSelectedID();
             if (!id) {
@@ -106,21 +108,24 @@
                 url: "/Admin/Icon/Delete",
                 params: { id: id },
                 success: function (result) {
-                    //触发搜索按钮点击事件
+                    // 触发搜索按钮点击事件
                     $("#btnSearch").trigger("click");
-                    //关闭操作按钮
+
+                    // 关闭操作按钮
                     $("#operateClose").trigger("click");
                 }
             })
         }
-        //显示操作按钮
+
+        // 显示操作按钮
         function showOperate() {
             var $operate = $(".operate");
             $operate.animate({ "left": 0 }, 200);
         }
-        //重新生成图标
+
+        // 重新生成图标
         function render() {
-            //弹出是否确认重新生成
+            // 弹出是否确认重新生成
             IsMatch.modal.confirm("注：您确定要重新生成吗？", function (r) {
                 if (r) {
                     //显示正在加载遮罩层
@@ -133,7 +138,8 @@
                             success: function (data) {
                                 if (data.Status === 1) {
                                     IsMatch.modal.msg(data.Msg, data.Status);
-                                    //显示列表数据
+
+                                    // 显示列表数据
                                     showGridList({});
                                 } else {
                                     IsMatch.modal.alert(data.Msg, data.Status);
@@ -145,32 +151,38 @@
             });
         }
         $(function () {
-            //显示列表数据
+            // 显示列表数据
             showGridList({});
-            //绑定搜索事件
+
+            // 绑定搜索事件
             $("#btnSearch").click(function () {
                 var key = $("#txtKey").val();
                 showGridList({ params: { key: key } });
             });
-            //绑定关闭操作按钮事件
+
+            // 绑定关闭操作按钮事件
             $("#operateClose").click(function () {
                 $(".operate").animate({ "left": '-100.1%' }, 200);
             });
 
-            //在ul上绑定带命名空间的点击事件，利用冒泡机制，在点击时判断是否是li元素触发，如果是才处理
-            //事件加上命名空间，是为了不想影响该元素的其他点击事件。比如$("#gridList").trigger("click")会触发所有点击事件，
-            //而$("#gridList").trigger("click.select")只会触发click.select事件;
+            // 在ul上绑定带命名空间的点击事件，利用冒泡机制，在点击时判断是否是li元素触发，如果是才处理
+            // 事件加上命名空间，是为了不想影响该元素的其他点击事件。比如$("#gridList").trigger("click")会触发所有点击事件，
+            // 而$("#gridList").trigger("click.select")只会触发click.select事件;
             $("#gridList").on("click.select", "li", function (e) {
                 var that = $(this);
-                //判断点击元素是否已经是选中状态，如果是则直接返回
+
+                // 判断点击元素是否已经是选中状态，如果是则直接返回
                 if (that.hasClass("selected")) {
                     return;
                 }
-                //为当前元素加上选中样式
+
+                // 为当前元素加上选中样式
                 that.addClass("selected");
-                //所有同辈元素移除选中样式
+
+                // 所有同辈元素移除选中样式
                 that.siblings().removeClass("selected");
-                //显示操作按钮
+
+                // 显示操作按钮
                 showOperate();
             });
         });
