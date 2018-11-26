@@ -17,18 +17,36 @@ a.dropdown-toggle > span, ul.sub-menu > li > a > span {
     padding-top:10px;
 }
 
-td.operate a {
-    padding-left: 5px;
+.topPanel .toolbar .btn i{margin-right:5px;font-size: 13px;}
+.topPanel .toolbar .operate{line-height:50px;height: 50px;width: 100%;background: #fff;position: absolute;top:0px;left:-100.1%;z-index:999;}
+.topPanel .toolbar .operate ul{margin: 9px 0 0 -2px;}
+.topPanel .toolbar .operate ul li{float: left;height: 12px;line-height: 12px;}
+.topPanel .toolbar .operate ul li.split{position: relative;display: block;border-right: 1px solid #c9c9c9;height: 16px;margin-left:5px;margin-right:5px;margin-top: 8px;}
+.topPanel .toolbar .operate ul li a{cursor:pointer;padding: 10px 10px;}
+.topPanel .toolbar .operate ul li i{margin-right:4px;font-size:13px;color: #666666;vertical-align: middle;margin-top: -1px;}
+.topPanel .toolbar .operate ul .first{position: relative;display: block;padding: 2px 15px;padding-right:10px;margin-top: 8px;margin-right:0px;border-right: 1px solid #c9c9c9;}
+.topPanel .toolbar .operate ul li.first > span{margin-left: 5px;margin-right:5px;}
+.topPanel .toolbar .operate .close{position: absolute;top:18px;right:12px;display:block;height: 12px;width: 12px;background: url(../img/button_pm_close.png) left center no-repeat;opacity: 0.9 !important;}
+.topPanel .toolbar .operate .dropdown-menu{top: 24px;}
+.topPanel .toolbar .operate .dropdown-menu li{float:none;height: auto;}
+.topPanel .toolbar .operate .dropdown-menu li a{padding: 5px 20px;}
+.gridPanel .operate a {
+    cursor: pointer;
+    padding: 3px 3px;
+    position: relative;
+    background-clip: padding-box;
+    border-radius: 4px;
 }
-.topPanel .toolbar .operate {
-    line-height: 50px;
-    height: 50px;
-    width: 100%;
-    background: #fff;
-    position: absolute;
-    top: 0px;
-    left: -100.1%;
-    z-index: 999;
+
+    .gridPanel .operate a:hover {
+        text-decoration: none;
+        background-color: #eee;
+    }
+
+.gridPanel .operate i {
+    margin-right: 4px;
+    font-size: 13px;
+    color: #666666; /*vertical-align: middle;margin-top: -1px;*/
 }
 /*
  * Metro UI CSS
