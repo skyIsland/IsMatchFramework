@@ -4,12 +4,12 @@
     Layout = "~/Views/Shared/_Form_Layout.cshtml";
 }
 @section Styles{
-    <link href="~/Content/global/plugins/jqgrid/jqgrid.css" rel="stylesheet" />
+    <link href="~/Content/global/js/plugins/bootstrap-table/bootstrap-table.css" rel="stylesheet" />
 }
 <form id="form1">
     <div class="row">
         <!--Default Tabs-->
-        <div class="col-12 col-lg-6">
+        <div class="col-12 col-lg-12">
             <div class="card">
                 <div class="tab-container">
                     <ul role="tablist" class="nav nav-tabs">
@@ -40,13 +40,13 @@
                         <div id="menu" role="tabpanel" class="tab-pane active">
                             <div class="gridPanel">
                                 <table id="menuGridList"></table>
-                                <input type="hidden" value="" id="MenuPermission" name="MenuPermission"/>
+                                <input type="hidden" value="" id="MenuPermission" name="MenuPermission" />
                             </div>
                         </div>
                         <div id="data" role="tabpanel" class="tab-pane active">
                             <div class="gridPanel">
                                 <table id="dataGridList"></table>
-                                <input type="hidden" value="" id="DataPermissionTemp" name="DataPermissionTemp"/>
+                                <input type="hidden" value="" id="DataPermissionTemp" name="DataPermissionTemp" />
                             </div>
                         </div>
                     </div>
@@ -57,62 +57,62 @@
 </form>
 
 @section Scripts{
-    <script src="~/Content/global/plugins/jqgrid/jqgrid.min.js"></script>
-    <script src="~/Content/global/plugins/jqgrid/grid.locale-cn.js"></script>
+    <script src="~/Content/global/js/plugins/bootstrap-table/bootstrap-table.js"></script>
+    <script src="~/Content/global/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
     <script type="text/javascript">
-        
+
         // 获取当前页面的请求参数，以对象的形式返回
         var requestData = IsMatch.common.getRequestData();
         var options = {
-            
+
             // 标题
             title: "角色表单",
-            
+
             // 单条数据查询地址
             dataQueryOneUrl: "/Admin/Role/GetOne",
-            
+
             // 数据添加地址，视图与操作是一个地址，只是请求方式及参数不同
             dataAddUrl: "/Admin/Role/Add",
-            
+
             // 数据编辑地址，视图与操作是一个地址，只是请求方式及参数不同
             dataUpdateUrl: "/Admin/Role/Edit",
-            
+
             // 点击“添加数据”对话框的确定按钮提交数据并关闭对话框
             onDataAdded: function () {
                 setPermission();
                 return this.submitForm(this.dataAddUrl);
             },
-            
+
             // 点击“编辑数据”对话框的确定按钮提交数据并关闭对话框
             onDataUpdated: function () {
                 setPermission();
                 return this.submitForm(this.dataUpdateUrl);
             }
         };
-        
+
         // 设置权限
         function setPermission() {
-            
+
             // 先设置菜单权限
             var trList = $("#menuGridList tr");
-            
+
             // 菜单权限集合
             var permissionList = [];
             if (trList && trList.length > 0) {
                 $.each(trList, function (key, value) {
                     var that = $(value);
-                    
+
                     // 第一列是表头列，需要跳过，所以这里需要加一重判断
                     var menuCkbox = that.find("input[name='btnMenu']");
-                    
+
                     // 第一列是表头列，需要跳过
-                    if (menuCkbox.length>0) {
+                    if (menuCkbox.length > 0) {
                         var menuID = menuCkbox.val();
-                        
+
                         // 功能权限复选框
                         var buttonCkboxs = that.find("input[name='btnButton']");
                         var buttonList = [];
-                        
+
                         // 遍历功能复选框集合
                         if (buttonCkboxs && buttonCkboxs.length > 0) {
                             $.each(buttonCkboxs, function (k, v) {
@@ -122,7 +122,7 @@
                                 }
                             });
                         }
-                        
+
                         // 字段权限
                         var radio = that.find(":radio:checked");
                         var isAllow = false;
@@ -131,7 +131,7 @@
                         }
                         var fieldNames = that.find("input[type='text']").val();
 
-                        
+
                         // 只有菜单被授权或者设置了功能权限按钮，才表明设置了权限
                         if (menuCkbox.prop("checked") || buttonList.length > 0) {
                             permissionList.push({ "ID": menuID, "IsAllow": isAllow, "FieldNames": fieldNames, "MenuButtons": buttonList });
@@ -144,52 +144,52 @@
             } else {
                 $("#MenuPermission").val("");
             }
-            
+
             // 再设置数据权限
             trList = $("#dataGridList tr");
-            
+
             // 菜单权限集合
             var dataPerIDs = '';
             if (trList && trList.length > 0) {
                 $.each(trList, function (key, value) {
                     var that = $(value);
-                    
+
                     // 菜单授权复选框
                     var dataPerCkbox = that.find("input[name='btnDataPermission']");
-                    
+
                     // 第一列是表头列，需要跳过，所以这里需要加一重判断
-                    if (dataPerCkbox.length>0&&dataPerCkbox.prop("checked")) {
+                    if (dataPerCkbox.length > 0 && dataPerCkbox.prop("checked")) {
                         dataPerIDs += dataPerCkbox.val() + ',';
                     }
                 });
-                
+
                 // 去除结尾的逗号
                 dataPerIDs = dataPerIDs.substring(0, dataPerIDs.lastIndexOf(","));
             }
             $("#DataPermissionTemp").val(dataPerIDs);
         }
-        
+
         // 视图模型
         var viewModel = new ViewModel(options);
-        
+
         // 初始化菜单数据列表
         function initMenuData(role) {
             IsMatch.grid.render("menuGridList", {
-                
+
                 // 是否是树列表
                 treeGrid: true,
-                
+
                 // 树展开方式：默认是Nested(嵌套的)，这里使用adjacency(相邻的)
                 treeGridModel: "adjacency",
-                
+
                 // 指定哪列来展开tree grid，默认为第一列，只有在treeGrid为true时起作用
                 ExpandColumn: "Sort",
-                
+
                 // 获取数据的地址
                 url: "/Admin/Menu/List",
                 width: "600px",
                 height: $(window).height() - 106,
-                
+
                 // 列模型
                 colModel: [
                     //{ field: "主键", name: "ID", hidden: true, key: true },
@@ -202,14 +202,14 @@
                             */
                         formatter: function (value, options, row) {
                             var html = '';
-                            
+
                             // 是否选中
                             var checked = '';
                             if (role && role.RoleMenus && role.RoleMenus.length > 0) {
                                 $.each(role.RoleMenus, function (key, value) {
                                     if (value.MenuID == row.ID) {
                                         checked = 'checked="checked"';
-                                        
+
                                         // 退出循环
                                         return false;
                                     }
@@ -228,8 +228,8 @@
                         formatter: function (value, options, row) {
                             var html = '<div class="action-button">';
                             if (row.MenuButtons) {
-                                
-          // 找出当前菜单是否被设置功能权限
+
+                                // 找出当前菜单是否被设置功能权限
                                 var roleMenuButtons = [];
                                 if (role && role.RoleMenuButtons && role.RoleMenuButtons.length > 0) {
                                     $.each(role.RoleMenuButtons, function (key, value) {
@@ -241,15 +241,15 @@
                                 $.each(row.MenuButtons, function (key, value) {
                                     var b = value.Button;
                                     if (b) {
-                                        
-          // 是否选中
+
+                                        // 是否选中
                                         var checked = '';
                                         if (roleMenuButtons.length > 0) {
                                             $.each(roleMenuButtons, function (key, value) {
                                                 if (value.ButtonID == b.ID) {
                                                     checked = 'checked="checked"';
-                                                    
-          // 退出循环
+
+                                                    // 退出循环
                                                     return false;
                                                 }
                                             });
@@ -272,11 +272,11 @@
                          */
                         formatter: function (value, options, row) {
                             var html = '<div class="action-button-field">';
-                            
-          // 选中允许
+
+                            // 选中允许
                             var allowChecked = '';
-                            
-          // 选中拒绝
+
+                            // 选中拒绝
                             var rejectChecked = '';
                             var fieldNames = '';
                             if (role && role.RoleMenus && role.RoleMenus.length > 0) {
@@ -288,8 +288,8 @@
                                             rejectChecked = 'checked="checked"';
                                         }
                                         fieldNames = value.FieldNames ? value.FieldNames : "";
-                                        
-          // 退出循环
+
+                                        // 退出循环
                                         return false;
                                     }
                                 });
@@ -302,76 +302,76 @@
                         }
                     }
                 ],
-                
-          // 禁掉其他排序
+
+                // 禁掉其他排序
                 sortable: false,
-                
-          // 默认排序字段
+
+                // 默认排序字段
                 sortname: "Sort",
-                
-          // 默认排序顺序
+
+                // 默认排序顺序
                 sortorder: "desc",
-                
-          // 当从服务器返回响应时执行，xhr：XMLHttpRequest 对象
+
+                // 当从服务器返回响应时执行，xhr：XMLHttpRequest 对象
                 loadComplete: function (xhr) {
-                    
-          // 查看详情页面需要设置表单控件只读
+
+                    // 查看详情页面需要设置表单控件只读
                     if (requestData.type == "detail") {
                         var $form = $("#form1");
                         $form.find('.form-control,select,input').attr('readonly', 'readonly');
                         $form.find('div.ckbox label').attr('for', '');
                         $form.find('div.rdio label').attr('for', '');
                     } else {
-                        
-          // 绑定菜单授权按钮点击事件
+
+                        // 绑定菜单授权按钮点击事件
                         $("input[name='btnMenu']").on("click.select", function (e) {
                             var that = $(this);
-                            
-          // 功能权限节点
+
+                            // 功能权限节点
                             var nextNode = that.parents("td").next("td");
-                            
-          // 如果取消授权，则同时取消功能按钮权限与字段权限的授权
+
+                            // 如果取消授权，则同时取消功能按钮权限与字段权限的授权
                             if (!that.prop("checked")) {
                                 nextNode.find("input[type='checkbox']").prop("checked", false);
-                                
-          // 找字段权限中的按钮
+
+                                // 找字段权限中的按钮
                                 nextNode.next("td").find("input[type='radio']").prop("checked", false);
                             } else {
-                                
-          // 授权时也选中功能权限按钮
+
+                                // 授权时也选中功能权限按钮
                                 nextNode.find("input[type='checkbox']").prop("checked", true);
                             }
                         });
-                        
-          // 绑定菜单功能按钮选中事件
+
+                        // 绑定菜单功能按钮选中事件
                         $(".action-button").on("click.select", "input[type='checkbox']", function (e) {
                             var that = $(this);
-                            
-          // 如果功能按钮选中，则去查一下菜单是否授权，如果没有授权，则授权
+
+                            // 如果功能按钮选中，则去查一下菜单是否授权，如果没有授权，则授权
                             if (that.prop("checked")) {
-                                
-          // 找到上上级td元素
+
+                                // 找到上上级td元素
                                 var parent = that.parents("td");
-                                
-          // 找到菜单授权复选框
+
+                                // 找到菜单授权复选框
                                 var menuPermission = parent.prev("td").find("input[type='checkbox']");
                                 if (menuPermission.length > 0 && !menuPermission.prop("checked")) {
                                     menuPermission.prop("checked", true);
                                 }
                             }
                         });
-                        
-          // 绑定字段权限按钮选择事件
+
+                        // 绑定字段权限按钮选择事件
                         $(".action-button-field").on("click.select", "input[type='radio']", function (e) {
                             var that = $(this);
-                            
-          // 如果字段权限按钮选中，则去查一下菜单是否授权，如果没有授权，则授权
+
+                            // 如果字段权限按钮选中，则去查一下菜单是否授权，如果没有授权，则授权
                             if (that.prop("checked")) {
-                                
-          // 找到上上级td元素
+
+                                // 找到上上级td元素
                                 var parent = that.parents("td");
-                                
-          // 找到菜单授权复选框
+
+                                // 找到菜单授权复选框
                                 var menuPermission = parent.prev("td").prev("td").find("input[type='checkbox']");
                                 if (menuPermission.length > 0 && !menuPermission.prop("checked")) {
                                     menuPermission.prop("checked", true);
@@ -382,26 +382,26 @@
                 }
             });
         }
-        
-          // 初始化数据权限列表
+
+        // 初始化数据权限列表
         function initDataPermission(role) {
             IsMatch.grid.render("dataGridList", {
-                
-          // 是否是树列表
+
+                // 是否是树列表
                 treeGrid: true,
-                
-          // 树展开方式：默认是Nested(嵌套的)，这里使用adjacency(相邻的)
+
+                // 树展开方式：默认是Nested(嵌套的)，这里使用adjacency(相邻的)
                 treeGridModel: "adjacency",
-                
-          // 指定哪列来展开tree grid，默认为第一列，只有在treeGrid为true时起作用
+
+                // 指定哪列来展开tree grid，默认为第一列，只有在treeGrid为true时起作用
                 ExpandColumn: "UpdateDate",
-                
-          // 获取数据的地址
+
+                // 获取数据的地址
                 url: "/Admin/DataPermission/List",
                 width: 900,
                 height: $(window).height() - 106,
-                
-          // 列模型
+
+                // 列模型
                 colModel: [
                     { field: "主键", name: "ID", hidden: true, key: true },
                     { field: "名称", name: "Name", width: 200, align: "left" },
@@ -419,15 +419,15 @@
                             */
                         formatter: function (value, options, row) {
                             var html = '';
-                            
-          // 是否选中
+
+                            // 是否选中
                             var checked = '';
                             if (role && role.RoleDataPermissions && role.RoleDataPermissions.length > 0) {
                                 $.each(role.RoleDataPermissions, function (key, value) {
                                     if (value.DataPermissionID == row.ID) {
                                         checked = 'checked="checked"';
-                                        
-          // 退出循环
+
+                                        // 退出循环
                                         return false;
                                     }
                                 });
@@ -437,20 +437,20 @@
                         }
                     }
                 ],
-                
-          // 禁掉其他排序
+
+                // 禁掉其他排序
                 sortable: false,
-                
-          // 默认排序字段
+
+                // 默认排序字段
                 sortname: "Sort",
-                
-          // 默认排序顺序
+
+                // 默认排序顺序
                 sortorder: "desc",
-                
-          // 当从服务器返回响应时执行，xhr：XMLHttpRequest 对象
+
+                // 当从服务器返回响应时执行，xhr：XMLHttpRequest 对象
                 loadComplete: function (xhr) {
-                    
-          // 查看详情页面需要设置表单控件只读
+
+                    // 查看详情页面需要设置表单控件只读
                     if (requestData.type == "detail") {
                         var $form = $("#form1");
                         $form.find('.form-control,select,input').attr('readonly', 'readonly');
@@ -461,34 +461,34 @@
         }
         /**初始化控件**/
         function initControl() {
-            
-          // id不为0说明是编辑或者查看详情页面
+
+            // id不为0说明是编辑或者查看详情页面
             if (requestData.id != "0") {
-                
-          // 加载数据
+
+                // 加载数据
                 viewModel.formLoad({
                     params: { id: requestData.id },
-                    
-          // 请求类型
+
+                    // 请求类型
                     type: requestData.type,
                     success: function (result) {
-                        
-          // 将数据反序列化绑定到表单上
+
+                        // 将数据反序列化绑定到表单上
                         IsMatch.form.deserialize("form1", result.Data);
                         initMenuData(result.Data);
                         initDataPermission(result.Data);
-                        
-          // 查看详情页面需要设置表单控件只读，已经挪到initMenuData方法中了
-                        
-          // if (requestData.type == "detail") {
-                        
-          //     var $form = $("#form1");
-                        
-          //     $form.find('.form-control,select,input').attr('readonly', 'readonly');
-                        
-          //     $form.find('div.ckbox label').attr('for', '');
-                        
-          // }
+
+                        // 查看详情页面需要设置表单控件只读，已经挪到initMenuData方法中了
+
+                        // if (requestData.type == "detail") {
+
+                        //     var $form = $("#form1");
+
+                        //     $form.find('.form-control,select,input').attr('readonly', 'readonly');
+
+                        //     $form.find('div.ckbox label').attr('for', '');
+
+                        // }
                     }
                 });
             } else {
